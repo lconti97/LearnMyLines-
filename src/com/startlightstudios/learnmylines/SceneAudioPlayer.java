@@ -8,12 +8,19 @@ import android.media.MediaPlayer.OnCompletionListener;
 
 import com.example.learnmylines.R;
 
-public class AudioPlayer {
+public class SceneAudioPlayer {
 
 	private MediaPlayer mPlayer;
-	private int mCurrentLineIndex = -1;
+	private int mCurrentLineIndex;
 	private Scene mScene;
 	private Context mContext;
+	
+	public SceneAudioPlayer(Context c, Scene s)
+	{
+		mContext = c;
+		mScene = s;
+		mCurrentLineIndex = 0;
+	}
 
 	public void playLine(Context c, int resId)
 	{
@@ -26,10 +33,7 @@ public class AudioPlayer {
 	public void playScene(Context c, Scene s)
 	{
 		stop();
-		mScene = s;
-		mContext = c;
 		ArrayList<Integer> lineIds = mScene.getLineIds();
-		mCurrentLineIndex = 0;
 		playLine(mContext, lineIds.get(mCurrentLineIndex));
 		mPlayer.setOnCompletionListener(new OnCompletionListener() {
 			

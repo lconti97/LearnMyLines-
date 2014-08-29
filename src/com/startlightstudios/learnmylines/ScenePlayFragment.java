@@ -12,7 +12,7 @@ import com.example.learnmylines.R;
 
 public class ScenePlayFragment extends Fragment {
 	private Button mPlayButton;
-	private AudioPlayer mPlayer = new AudioPlayer();
+	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
 
 
@@ -23,6 +23,7 @@ public class ScenePlayFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 		
 		mScene = new Scene("Scene I");
+		mPlayer = new SceneAudioPlayer(getActivity(), mScene);
 		mScene.addLine(R.raw.voice0150);
 		mScene.addLine(R.raw.voice0151);
 		
