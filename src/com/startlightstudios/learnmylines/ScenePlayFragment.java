@@ -14,6 +14,7 @@ public class ScenePlayFragment extends Fragment {
 	private Button mPlayButton;
 	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
+	private Button mPauseButton;
 
 
 	@Override 
@@ -35,6 +36,8 @@ public class ScenePlayFragment extends Fragment {
 				mPlayer.playScene(getActivity(), mScene);
 			}
 		});
+		
+		mPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_pauseButton);
 		
 		return v;
 	}
