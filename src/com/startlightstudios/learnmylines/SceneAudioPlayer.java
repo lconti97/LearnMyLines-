@@ -24,15 +24,15 @@ public class SceneAudioPlayer {
 
 	public void playLine(Context c, int resId)
 	{
-		stop();
-
-		mPlayer = MediaPlayer.create(c, resId);
+		if(mPlayer == null)
+		{
+			mPlayer = MediaPlayer.create(c, resId);
+		}
 		mPlayer.start(); 
 	}
 
 	public void playScene(Context c, Scene s)
 	{
-		stop();
 		ArrayList<Integer> lineIds = mScene.getLineIds();
 		playLine(mContext, lineIds.get(mCurrentLineIndex));
 		mPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -45,6 +45,10 @@ public class SceneAudioPlayer {
 				{
 					mCurrentLineIndex++;
 					playLine(mContext, mScene.getLineIds().get(mCurrentLineIndex));
+				}
+				else
+				{
+					mCurrentLineIndex = 0;
 				}
 			}
 		});
