@@ -49,6 +49,16 @@ public class SceneAudioPlayer {
 			}
 		});
 	}
+	
+	public void pause()
+	{
+		if (mPlayer == null || !mPlayer.isPlaying())
+			return;
+		else
+		{
+			mPlayer.pause();
+		}
+	}
 
 	public void stop()
 	{

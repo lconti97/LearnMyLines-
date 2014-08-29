@@ -38,6 +38,13 @@ public class ScenePlayFragment extends Fragment {
 		});
 		
 		mPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_pauseButton);
+		mPauseButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mPlayer.pause();
+			}
+		});
 		
 		return v;
 	}
