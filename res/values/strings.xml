@@ -6,5 +6,6 @@
     <string name="play">Play</string>
     <string name="pause">Pause</string>
     <string name="edit">Edit</string>
+    <string name="record">Record</string>
 
 </resources>

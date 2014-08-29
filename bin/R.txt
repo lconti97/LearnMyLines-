@@ -246,7 +246,7 @@ int id action_context_bar 0x7f06001d
 int id action_menu_divider 0x7f060016
 int id action_menu_presenter 0x7f060017
 int id action_mode_close_button 0x7f060024
-int id action_settings 0x7f060040
+int id action_settings 0x7f060041
 int id activity_chooser_view_content 0x7f060025
 int id activity_edit_play_view_pager 0x7f06003c
 int id always 0x7f06000b
@@ -262,8 +262,9 @@ int id end 0x7f060013
 int id expand_activities_button 0x7f060026
 int id expanded_menu 0x7f06002c
 int id fragmentContainer 0x7f06003d
-int id fragment_scene_play_pauseButton 0x7f06003f
-int id fragment_scene_play_playButton 0x7f06003e
+int id fragment_scene_edit_recordButton 0x7f06003e
+int id fragment_scene_play_pauseButton 0x7f060040
+int id fragment_scene_play_playButton 0x7f06003f
 int id home 0x7f060014
 int id homeAsUp 0x7f060005
 int id icon 0x7f06002a
@@ -327,8 +328,9 @@ int layout abc_search_view 0x7f030016
 int layout abc_simple_decor 0x7f030017
 int layout activity_edit_play_pager 0x7f030018
 int layout activity_fragment 0x7f030019
-int layout fragment_scene_play 0x7f03001a
-int layout support_simple_spinner_dropdown_item 0x7f03001b
+int layout fragment_scene_edit 0x7f03001a
+int layout fragment_scene_play 0x7f03001b
+int layout support_simple_spinner_dropdown_item 0x7f03001c
 int menu scene_play 0x7f0d0000
 int raw one_small_step 0x7f050000
 int raw voice0150 0x7f050001
@@ -351,6 +353,7 @@ int string app_name 0x7f0b000d
 int string edit 0x7f0b0011
 int string pause 0x7f0b0010
 int string play 0x7f0b000f
+int string record 0x7f0b0012
 int style AppBaseTheme 0x7f0c008b
 int style AppTheme 0x7f0c008c
 int style TextAppearance_AppCompat_Base_CompactMenu_Dialog 0x7f0c0063

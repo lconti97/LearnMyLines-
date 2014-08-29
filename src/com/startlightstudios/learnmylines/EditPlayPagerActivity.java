@@ -55,7 +55,10 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 			@Override
 			public Fragment getItem(int pos) {
-				return new ScenePlayFragment();
+				if(pos == 0)
+					return new SceneEditFragment();
+				else
+					return new ScenePlayFragment();
 			}
 		});
 
