@@ -20,7 +20,7 @@ public class AudioPlayer {
 		stop();
 
 		mPlayer = MediaPlayer.create(c, resId);
-		mPlayer.start();
+		mPlayer.start(); 
 	}
 
 	public void playScene(Context c, Scene s)
