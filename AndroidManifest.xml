@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.startlightstudios.learnmylines.ScenePlayActivity"
+            android:name="com.startlightstudios.learnmylines.EditPlayPagerActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
