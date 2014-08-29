@@ -348,6 +348,7 @@ int string abc_shareactionprovider_share_with 0x7f0b000c
 int string abc_shareactionprovider_share_with_application 0x7f0b000b
 int string action_settings 0x7f0b000e
 int string app_name 0x7f0b000d
+int string edit 0x7f0b0011
 int string pause 0x7f0b0010
 int string play 0x7f0b000f
 int style AppBaseTheme 0x7f0c008b
