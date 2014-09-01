@@ -1,14 +1,15 @@
 package com.startlightstudios.learnmylines;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-
-import com.example.learnmylines.R;
+import android.util.Log;
 
 public class SceneAudioPlayer {
+	private static final String TAG = "SceneAudioPlayer";
 
 	private MediaPlayer mPlayer;
 	private int mCurrentLineIndex;
@@ -30,11 +31,29 @@ public class SceneAudioPlayer {
 		}
 		mPlayer.start(); 
 	}
+	
+	public void playLine(Context c, String linePath)
+	{
+		if(mPlayer == null)
+		{
+			mPlayer = new MediaPlayer();
+			try
+			{
+				mPlayer.setDataSource(linePath);
+				mPlayer.prepare();
+				mPlayer.start();
+			}
+			catch(IOException e)
+			{
+				Log.i(TAG, "prepare() failed", e);
+			}
+		}
+	}
 
 	public void playScene(Context c, Scene s)
 	{
-		ArrayList<Integer> lineIds = mScene.getLineIds();
-		playLine(mContext, lineIds.get(mCurrentLineIndex));
+		ArrayList<String> linePaths = mScene.getLinePaths();
+		playLine(mContext, linePaths.get(mCurrentLineIndex));
 		mPlayer.setOnCompletionListener(new OnCompletionListener() {
 			
 			@Override

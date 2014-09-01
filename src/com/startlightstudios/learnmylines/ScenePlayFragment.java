@@ -23,10 +23,8 @@ public class ScenePlayFragment extends Fragment {
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 		
-		mScene = new Scene("Scene I");
+		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 		mPlayer = new SceneAudioPlayer(getActivity(), mScene);
-		mScene.addLine(R.raw.voice0150);
-		mScene.addLine(R.raw.voice0151);
 		
 		mPlayButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
 		mPlayButton.setOnClickListener(new OnClickListener() {
@@ -55,4 +53,14 @@ public class ScenePlayFragment extends Fragment {
 		super.onDestroy();
 		mPlayer.stop();
 	}
+
+	public Scene getScene() {
+		return mScene;
+	}
+
+	public void setScene(Scene scene) {
+		mScene = scene;
+	}
+	
+	
 }

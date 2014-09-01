@@ -1,8 +1,9 @@
 package com.startlightstudios.learnmylines;
 
-import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,8 +13,13 @@ import android.widget.Button;
 import com.example.learnmylines.R;
 
 public class SceneEditFragment extends Fragment{
-	private Button mRecordButton;
+	private static final String TAG = "SceneEditFragment";
 	
+	private Button mRecordButton;
+	private SceneAudioRecorder mRecorder;
+	private boolean recording = false;
+	private String mFileName;
+	private Scene mScene;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -21,13 +27,36 @@ public class SceneEditFragment extends Fragment{
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 
+		mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+		mFileName += "/learnmylines.3gp";
+		
+		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
+
+		mRecorder = new SceneAudioRecorder();
+
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
 		mRecordButton.setText(R.string.record);
 		mRecordButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				
+				if(!recording)
+				{
+					recording =	mRecorder.start(mScene, mFileName);
+					if(recording)
+					{
+						mRecordButton.setText(R.string.stop);
+					}
+					else
+					{
+						Log.i(TAG, "Recording failed to start");
+					}
+				}
+				else
+				{
+					mRecorder.stop();
+					mRecordButton.setText(R.string.record);
+				}
 			}
 		});
 

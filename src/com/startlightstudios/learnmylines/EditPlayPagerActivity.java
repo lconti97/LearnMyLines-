@@ -18,6 +18,8 @@ import com.example.learnmylines.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class EditPlayPagerActivity extends FragmentActivity {
+	public static final Scene SAMPLE_SCENE = new Scene("Scene I");
+	
 	private ViewPager mViewPager;
 
 	@Override

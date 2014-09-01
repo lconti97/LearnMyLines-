@@ -1258,6 +1258,7 @@ containing a value of this type.
         public static final int pause=0x7f0b0010;
         public static final int play=0x7f0b000f;
         public static final int record=0x7f0b0012;
+        public static final int stop=0x7f0b0013;
     }
     public static final class style {
         /** 
