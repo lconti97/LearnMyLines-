@@ -62,4 +62,11 @@ public class SceneEditFragment extends Fragment{
 
 		return v;
 	}
+	
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		mRecorder.release();
+	}
 }

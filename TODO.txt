@@ -5,3 +5,4 @@ Expand model layer to Project Manager, Project, Act, Scene, Line
 Add error listeners, ect. to Audio Resources
 Disable play button if no recorded lines exist
 Use Title
+Multithread SceneAudioPlayer's prepare()

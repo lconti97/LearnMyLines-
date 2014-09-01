@@ -28,7 +28,7 @@ public class SceneAudioPlayer extends MediaPlayer {
 			}
 			catch(IOException e)
 			{
-				Log.i(TAG, "prepare() failed", e);
+				Log.e(TAG, "prepare() failed", e);
 			}
 		}
 		else
@@ -39,6 +39,7 @@ public class SceneAudioPlayer extends MediaPlayer {
 
 	}
 
+	@Override
 	public void pause()
 	{
 		super.pause();
