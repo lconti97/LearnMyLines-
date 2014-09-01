@@ -8,19 +8,22 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.util.Log;
 
-public class SceneAudioPlayer {
+public class SceneAudioPlayer extends MediaPlayer {
 	private static final String TAG = "SceneAudioPlayer";
 
 	private MediaPlayer mPlayer;
 	private int mCurrentLineIndex;
 	private Scene mScene;
 	private Context mContext;
+	private boolean mPaused;
 	
 	public SceneAudioPlayer(Context c, Scene s)
 	{
+		mPaused = false;
 		mContext = c;
 		mScene = s;
 		mCurrentLineIndex = 0;
+		mPlayer = new MediaPlayer();
 	}
 
 	public void playLine(Context c, int resId)
@@ -34,11 +37,11 @@ public class SceneAudioPlayer {
 	
 	public void playLine(Context c, String linePath)
 	{
-		if(mPlayer == null)
+		if(!mPaused)
 		{
-			mPlayer = new MediaPlayer();
 			try
 			{
+				mPlayer.reset();
 				mPlayer.setDataSource(linePath);
 				mPlayer.prepare();
 				mPlayer.start();
@@ -48,30 +51,14 @@ public class SceneAudioPlayer {
 				Log.i(TAG, "prepare() failed", e);
 			}
 		}
+		else
+		{
+			mPlayer.start();
+			mPaused = false;
+		}
+		
 	}
 
-	public void playScene(Context c, Scene s)
-	{
-		ArrayList<String> linePaths = mScene.getLinePaths();
-		playLine(mContext, linePaths.get(mCurrentLineIndex));
-		mPlayer.setOnCompletionListener(new OnCompletionListener() {
-			
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				stop();
-				// If the next line exists
-				if(mCurrentLineIndex + 1  < mScene.getLineIds().size())
-				{
-					mCurrentLineIndex++;
-					playLine(mContext, mScene.getLineIds().get(mCurrentLineIndex));
-				}
-				else
-				{
-					mCurrentLineIndex = 0;
-				}
-			}
-		});
-	}
 	
 	public void pause()
 	{
@@ -80,6 +67,7 @@ public class SceneAudioPlayer {
 		else
 		{
 			mPlayer.pause();
+			mPaused = true;
 		}
 	}
 
@@ -87,8 +75,12 @@ public class SceneAudioPlayer {
 	{
 		if(mPlayer != null)
 		{
-			mPlayer.release();
-			mPlayer = null;
+			mPlayer.stop();
 		}
+	}
+
+	public void setOnCompletionListener(
+			OnCompletionListener onCompletionListener) {
+		mPlayer.setOnCompletionListener(onCompletionListener);
 	}
 }
