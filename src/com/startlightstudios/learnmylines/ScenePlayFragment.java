@@ -11,10 +11,10 @@ import android.widget.Button;
 import com.example.learnmylines.R;
 
 public class ScenePlayFragment extends Fragment {
-	private Button mPlayButton;
+	private Button mPlayPauseButton;
 	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
-	private Button mPauseButton;
+	private boolean mPlaying = false;
 
 
 	@Override 
@@ -22,31 +22,33 @@ public class ScenePlayFragment extends Fragment {
 			Bundle savedInstanceState)
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
-		
+
 		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 		mPlayer = new SceneAudioPlayer(getActivity(), mScene);
-		
-		mPlayButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
-		mPlayButton.setOnClickListener(new OnClickListener() {
+
+		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
+		mPlayPauseButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				mPlayer.playScene(getActivity(), mScene);
+				if(!mPlaying)
+				{
+					mPlayer.playScene(getActivity(), mScene);
+					mPlayPauseButton.setText(R.string.pause);
+					mPlaying = true;
+				}
+				else
+				{
+					mPlayer.pause();
+					mPlayPauseButton.setText(R.string.play);
+					mPlaying = false;
+				}
 			}
 		});
-		
-		mPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_pauseButton);
-		mPauseButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				mPlayer.pause();
-			}
-		});
-		
+
 		return v;
 	}
-	
+
 	@Override
 	public void onDestroy()
 	{
@@ -61,6 +63,6 @@ public class ScenePlayFragment extends Fragment {
 	public void setScene(Scene scene) {
 		mScene = scene;
 	}
-	
-	
+
+
 }
