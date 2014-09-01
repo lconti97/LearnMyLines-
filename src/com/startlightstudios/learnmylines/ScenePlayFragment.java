@@ -30,7 +30,7 @@ public class ScenePlayFragment extends Fragment {
 
 		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 		mCurrentLineIndex = 0;
-		mPlayer = new SceneAudioPlayer(getActivity(), mScene);
+		mPlayer = new SceneAudioPlayer();
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
 		mPlayPauseButton.setOnClickListener(new OnClickListener() {
@@ -59,7 +59,7 @@ public class ScenePlayFragment extends Fragment {
 	public void playScene()
 	{
 		ArrayList<String> linePaths = mScene.getLinePaths();
-		mPlayer.playLine(getActivity(), linePaths.get(mCurrentLineIndex));
+		mPlayer.playLine(linePaths.get(mCurrentLineIndex));
 		mPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -69,7 +69,7 @@ public class ScenePlayFragment extends Fragment {
 				if(mCurrentLineIndex + 1  < mScene.getLineIds().size())
 				{
 					mCurrentLineIndex++;
-					mPlayer.playLine(getActivity(), mScene.getLineIds().get(mCurrentLineIndex));
+					mPlayer.playLine(mScene.getLinePaths().get(mCurrentLineIndex));
 				}
 				else
 				{

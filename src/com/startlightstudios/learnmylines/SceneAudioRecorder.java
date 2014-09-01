@@ -5,7 +5,7 @@ import java.io.IOException;
 import android.media.MediaRecorder;
 import android.util.Log;
 
-public class SceneAudioRecorder extends MediaRecorder {
+public class SceneAudioRecorder {
 	private static String TAG = "SceneAudioRecorder";
 
 	private MediaRecorder mRecorder;
@@ -38,7 +38,6 @@ public class SceneAudioRecorder extends MediaRecorder {
 		return true;
 	}
 
-	@Override
 	public void stop()
 	{
 		if(mRecorder != null)

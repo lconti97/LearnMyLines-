@@ -4,4 +4,4 @@ Save model layer using JSON
 Expand model layer to Project Manager, Project, Act, Scene, Line
 Add error listeners, ect. to Audio Resources
 Disable play button if no recorded lines exist
-Tell ScenePlayFragment when the audio is finished playing
+Use Title
