@@ -13,20 +13,14 @@ public class SceneAudioRecorder extends MediaRecorder {
 	private Scene mScene;
 	private String mFileName;
 
-	public SceneAudioRecorder()
-	{
-		super();
-		setAudioSource(MediaRecorder.AudioSource.MIC);
-		setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-		setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-	}
-
 	public boolean start(Scene scene)
 	{
 		try
 		{
 			mScene = scene;
+			setAudioSource(MediaRecorder.AudioSource.MIC);
+			setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+			setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 			mFileName = createFileName();			
 			setOutputFile(mFileName);
 			prepare();

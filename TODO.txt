@@ -6,3 +6,5 @@ Add error listeners, ect. to Audio Resources
 Disable play button if no recorded lines exist
 Use Title
 Multithread SceneAudioPlayer's prepare()
+Bugfix: record button fails on 3rd click
+Enhance audio quality

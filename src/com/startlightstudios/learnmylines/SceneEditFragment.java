@@ -55,7 +55,7 @@ public class SceneEditFragment extends Fragment{
 				else
 				{
 					mRecorder.stop();
-					mRecorder.release();
+					mRecorder.reset();
 					mRecordButton.setText(R.string.record);
 					mRecording = false;
 				}

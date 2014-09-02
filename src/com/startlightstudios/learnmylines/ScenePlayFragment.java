@@ -82,9 +82,9 @@ public class ScenePlayFragment extends Fragment {
 	}
 
 	@Override
-	public void onPause()
+	public void onStop()
 	{
-		super.onPause();
+		super.onStop();
 		mPlayer.release();
 	}
 	@Override
