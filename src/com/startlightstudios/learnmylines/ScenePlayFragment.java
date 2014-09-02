@@ -21,7 +21,6 @@ public class ScenePlayFragment extends Fragment {
 	private boolean mPlaying = false;
 	private int mCurrentLineIndex;
 
-
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
@@ -32,6 +31,15 @@ public class ScenePlayFragment extends Fragment {
 		mCurrentLineIndex = 0;
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
+		//if mPlaying, the fragment has been rotated 
+		if(!mPlaying)
+		{
+			mPlayPauseButton.setText(R.string.play);
+		}
+		else
+		{
+			mPlayPauseButton.setText(R.string.pause);
+		}
 		mPlayPauseButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -80,9 +88,9 @@ public class ScenePlayFragment extends Fragment {
 	}
 
 	@Override
-	public void onStop()
+	public void onDestroy()
 	{
-		super.onPause();
+		super.onDestroy();
 		if(mPlaying)
 		{
 			mPlayer.stop();
@@ -93,18 +101,19 @@ public class ScenePlayFragment extends Fragment {
 	}
 
 	@Override
-	public void onStart()
+	public void onCreate(Bundle savedInstanceState)
 	{
-		super.onResume();
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 		mPlayer = new SceneAudioPlayer();
 	}
-	
+
 	private void onPlayComplete()
 	{
 		mPlayPauseButton.setText(R.string.play);
 		mPlaying = false;
 	}
-	
+
 	public Scene getScene() {
 		return mScene;
 	}

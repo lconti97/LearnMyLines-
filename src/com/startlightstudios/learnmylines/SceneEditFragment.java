@@ -14,11 +14,10 @@ import com.example.learnmylines.R;
 
 public class SceneEditFragment extends Fragment{
 	private static final String TAG = "SceneEditFragment";
-	
+
 	private Button mRecordButton;
 	private SceneAudioRecorder mRecorder;
 	private boolean mRecording = false;
-	private String mFileName;
 	private Scene mScene;
 
 	@Override
@@ -27,13 +26,18 @@ public class SceneEditFragment extends Fragment{
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 
-		mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-		mFileName += "/learnmylines.3gp";
-		
 		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
-		mRecordButton.setText(R.string.record);
+		//if mRecording, the fragment has been rotated
+		if(!mRecording)
+		{
+			mRecordButton.setText(R.string.record);
+		}
+		else
+		{
+			mRecordButton.setText(R.string.stop);
+		}
 		mRecordButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -59,11 +63,11 @@ public class SceneEditFragment extends Fragment{
 
 		return v;
 	}
-	
+
 	@Override
-	public void onStop()
+	public void onDestroy()
 	{
-		super.onStop();
+		super.onDestroy();
 		if(mRecording)
 		{
 			stopRecording();
@@ -71,14 +75,15 @@ public class SceneEditFragment extends Fragment{
 		mRecorder.release();
 		mRecorder = null;
 	}
-	
+
 	@Override
-	public void onStart()
+	public void onCreate(Bundle savedInstanceState)
 	{
-		super.onResume();
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 		mRecorder = new SceneAudioRecorder();
 	}
-	
+
 	private void stopRecording()
 	{
 		mRecorder.stop();
