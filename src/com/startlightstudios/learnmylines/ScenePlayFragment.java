@@ -73,7 +73,7 @@ public class ScenePlayFragment extends Fragment {
 			public void onCompletion(MediaPlayer mp) {
 				mPlayer.stop();
 				// If the next line exists
-				if(mCurrentLineIndex + 1  < mScene.getLineIds().size())
+				if(mCurrentLineIndex + 1  < mScene.getLinePaths().size())
 				{
 					mCurrentLineIndex++;
 					mPlayer.playLine(mScene.getLinePaths().get(mCurrentLineIndex));

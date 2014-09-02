@@ -8,4 +8,4 @@ Use Title
 Multithread SceneAudioPlayer's prepare()
 Enhance audio quality
 Bugfix: play button only plays first line
-Retain fragment?
+Problem: I want to pause audio playback in onStop() except for rotations
