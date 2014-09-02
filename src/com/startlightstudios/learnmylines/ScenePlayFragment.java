@@ -30,7 +30,6 @@ public class ScenePlayFragment extends Fragment {
 
 		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 		mCurrentLineIndex = 0;
-		mPlayer = new SceneAudioPlayer();
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
 		mPlayPauseButton.setOnClickListener(new OnClickListener() {
@@ -73,9 +72,8 @@ public class ScenePlayFragment extends Fragment {
 				}
 				else
 				{
-					mPlayPauseButton.setText(R.string.play);
+					onPlayComplete();
 					mCurrentLineIndex = 0;
-					mPlaying = false;
 				}
 			}
 		});
@@ -84,16 +82,29 @@ public class ScenePlayFragment extends Fragment {
 	@Override
 	public void onStop()
 	{
-		super.onStop();
+		super.onPause();
+		if(mPlaying)
+		{
+			mPlayer.stop();
+			onPlayComplete();
+		}
 		mPlayer.release();
-	}
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-		mPlayer.stop();
+		mPlayer = null;
 	}
 
+	@Override
+	public void onStart()
+	{
+		super.onResume();
+		mPlayer = new SceneAudioPlayer();
+	}
+	
+	private void onPlayComplete()
+	{
+		mPlayPauseButton.setText(R.string.play);
+		mPlaying = false;
+	}
+	
 	public Scene getScene() {
 		return mScene;
 	}

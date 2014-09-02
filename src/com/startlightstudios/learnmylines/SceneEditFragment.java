@@ -32,8 +32,6 @@ public class SceneEditFragment extends Fragment{
 		
 		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
 
-		mRecorder = new SceneAudioRecorder();
-
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
 		mRecordButton.setText(R.string.record);
 		mRecordButton.setOnClickListener(new OnClickListener() {
@@ -54,10 +52,7 @@ public class SceneEditFragment extends Fragment{
 				}
 				else
 				{
-					mRecorder.stop();
-					mRecorder.reset();
-					mRecordButton.setText(R.string.record);
-					mRecording = false;
+					stopRecording();
 				}
 			}
 		});
@@ -69,6 +64,26 @@ public class SceneEditFragment extends Fragment{
 	public void onStop()
 	{
 		super.onStop();
+		if(mRecording)
+		{
+			stopRecording();
+		}
 		mRecorder.release();
+		mRecorder = null;
+	}
+	
+	@Override
+	public void onStart()
+	{
+		super.onResume();
+		mRecorder = new SceneAudioRecorder();
+	}
+	
+	private void stopRecording()
+	{
+		mRecorder.stop();
+		mRecorder.reset();
+		mRecordButton.setText(R.string.record);
+		mRecording = false;
 	}
 }
