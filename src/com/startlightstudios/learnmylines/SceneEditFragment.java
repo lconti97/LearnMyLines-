@@ -1,7 +1,6 @@
 package com.startlightstudios.learnmylines;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +25,7 @@ public class SceneEditFragment extends Fragment{
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 
-		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
+		mScene = EditPlayPagerActivity.sampleRJSceneOne;
 
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
 		//if mRecording, the fragment has been rotated

@@ -3,27 +3,29 @@ package com.startlightstudios.learnmylines;
 import java.util.ArrayList;
 
 public class Scene {
-	private String title;
-	private ArrayList<String> linePaths;
+	private String mTitle;
+	private ArrayList<Line> lines;
 	private Scene.OnDataChangedListener listener;
+	private Act mAct;
 	
-	public Scene(String t)
+	public Scene(String title, Act act)
 	{
-		title = t;
-		linePaths = new ArrayList<String>();
+		mTitle = title;
+		mAct = act;
+		lines = new ArrayList<Line>();
 	}
 	
 	public void addLine(String filename)
 	{
-		linePaths.add(filename);
+		lines.add(new Line(filename, this));
 		if(listener != null)
 		{
-			listener.onDataChanged(linePaths);
+			listener.onDataChanged(lines);
 		}
 	}
 
-	public ArrayList<String> getLinePaths() {
-		return linePaths;
+	public ArrayList<Line> getLines() {
+		return lines;
 	}
 	
 	public void setOnDataChangedListener(OnDataChangedListener l)
@@ -33,7 +35,7 @@ public class Scene {
 	
 	public interface OnDataChangedListener {
 		
-		public void onDataChanged(ArrayList<String> linePaths);
+		public void onDataChanged(ArrayList<Line> lines);
 	}
 
 }

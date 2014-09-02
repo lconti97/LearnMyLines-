@@ -15,14 +15,14 @@ public class SceneAudioPlayer extends MediaPlayer {
 		mPaused = false;
 	}
 
-	public void playLine(String linePath)
+	public void playLine(Line line)
 	{
 		if(!mPaused)
 		{
 			try
 			{
 				reset();
-				setDataSource(linePath);
+				setDataSource(line.getFileName());
 				prepare();
 				start();
 			}

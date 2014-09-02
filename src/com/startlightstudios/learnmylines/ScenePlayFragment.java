@@ -6,7 +6,6 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +30,7 @@ public class ScenePlayFragment extends Fragment {
 	{
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 
-		mScene = EditPlayPagerActivity.SAMPLE_SCENE;
+		mScene = EditPlayPagerActivity.sampleRJSceneOne;
 		mCurrentLineIndex = 0;
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
@@ -44,7 +43,7 @@ public class ScenePlayFragment extends Fragment {
 		{
 			mPlayPauseButton.setText(R.string.pause);
 		}
-		if(mScene.getLinePaths().size() == 0)
+		if(mScene.getLines().size() == 0)
 		{
 			mPlayPauseButton.setEnabled(false);
 		}
@@ -74,7 +73,7 @@ public class ScenePlayFragment extends Fragment {
 		mScene.setOnDataChangedListener(new OnDataChangedListener() {
 			
 			@Override
-			public void onDataChanged(ArrayList<String> linePaths) {
+			public void onDataChanged(ArrayList<Line> linePaths) {
 				if(linePaths.size() == 0)
 				{
 					mPlayPauseButton.setEnabled(false);
@@ -92,18 +91,18 @@ public class ScenePlayFragment extends Fragment {
 
 	public void playScene()
 	{
-		ArrayList<String> linePaths = mScene.getLinePaths();
-		mPlayer.playLine(linePaths.get(mCurrentLineIndex));
+		ArrayList<Line> lines = mScene.getLines();
+		mPlayer.playLine(lines.get(mCurrentLineIndex));
 		mPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
 			public void onCompletion(MediaPlayer mp) {
 				mPlayer.stop();
 				// If the next line exists
-				if(mCurrentLineIndex + 1  < mScene.getLinePaths().size())
+				if(mCurrentLineIndex + 1  < mScene.getLines().size())
 				{
 					mCurrentLineIndex++;
-					mPlayer.playLine(mScene.getLinePaths().get(mCurrentLineIndex));
+					mPlayer.playLine(mScene.getLines().get(mCurrentLineIndex));
 				}
 				else
 				{
