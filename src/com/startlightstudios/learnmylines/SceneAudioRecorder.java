@@ -1,15 +1,17 @@
 package com.startlightstudios.learnmylines;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import android.media.MediaRecorder;
+import android.os.Environment;
 import android.util.Log;
 
 public class SceneAudioRecorder extends MediaRecorder {
 	private static String TAG = "SceneAudioRecorder";
 
-	private String mFileName;
 	private Scene mScene;
+	private String mFileName;
 
 	public SceneAudioRecorder()
 	{
@@ -17,15 +19,16 @@ public class SceneAudioRecorder extends MediaRecorder {
 		setAudioSource(MediaRecorder.AudioSource.MIC);
 		setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 		setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
 	}
 
-	public boolean start(Scene scene, String filename)
+	public boolean start(Scene scene)
 	{
 		try
 		{
 			mScene = scene;
-			mFileName = filename;
-			setOutputFile(filename);
+			mFileName = createFileName();			
+			setOutputFile(mFileName);
 			prepare();
 		}
 		catch (IOException e)
@@ -35,6 +38,15 @@ public class SceneAudioRecorder extends MediaRecorder {
 		}
 		start();
 		return true;
+	}
+	
+	private String createFileName()
+	{
+		String fn = Environment.getExternalStorageDirectory().getAbsolutePath();
+		fn += "/learnmylines";
+		fn += UUID.randomUUID().toString();
+		fn += ".3gp";
+		return fn;
 	}
 
 	@Override

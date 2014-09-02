@@ -1,5 +1,5 @@
-Combine the Play and Pause button in ScenePlayFragment
-Give unique filenames to recorded files
+Give unique filenames to recorded files based on Project, Act, Scene, Line
+	Ensure Project, Act, Scene, Line combinations are unique
 Save model layer using JSON
 Expand model layer to Project Manager, Project, Act, Scene, Line
 Add error listeners, ect. to Audio Resources

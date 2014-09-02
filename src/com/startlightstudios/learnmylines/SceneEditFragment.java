@@ -17,7 +17,7 @@ public class SceneEditFragment extends Fragment{
 	
 	private Button mRecordButton;
 	private SceneAudioRecorder mRecorder;
-	private boolean recording = false;
+	private boolean mRecording = false;
 	private String mFileName;
 	private Scene mScene;
 
@@ -40,10 +40,10 @@ public class SceneEditFragment extends Fragment{
 
 			@Override
 			public void onClick(View v) {
-				if(!recording)
+				if(!mRecording)
 				{
-					recording =	mRecorder.start(mScene, mFileName);
-					if(recording)
+					mRecording = mRecorder.start(mScene);
+					if(mRecording)
 					{
 						mRecordButton.setText(R.string.stop);
 					}
@@ -55,7 +55,9 @@ public class SceneEditFragment extends Fragment{
 				else
 				{
 					mRecorder.stop();
+					mRecorder.release();
 					mRecordButton.setText(R.string.record);
+					mRecording = false;
 				}
 			}
 		});
