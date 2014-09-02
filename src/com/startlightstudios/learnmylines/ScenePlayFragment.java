@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,8 +14,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.learnmylines.R;
+import com.startlightstudios.learnmylines.Scene.OnDataChangedListener;
 
 public class ScenePlayFragment extends Fragment {
+	private static final String TAG = "ScenePlayFragment";
+	
 	private Button mPlayPauseButton;
 	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
@@ -40,6 +44,14 @@ public class ScenePlayFragment extends Fragment {
 		{
 			mPlayPauseButton.setText(R.string.pause);
 		}
+		if(mScene.getLinePaths().size() == 0)
+		{
+			mPlayPauseButton.setEnabled(false);
+		}
+		else
+		{
+			mPlayPauseButton.setEnabled(true);
+		}
 		mPlayPauseButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -55,6 +67,21 @@ public class ScenePlayFragment extends Fragment {
 					mPlayer.pause();
 					mPlayPauseButton.setText(R.string.play);
 					mPlaying = false;
+				}
+			}
+		});
+		
+		mScene.setOnDataChangedListener(new OnDataChangedListener() {
+			
+			@Override
+			public void onDataChanged(ArrayList<String> linePaths) {
+				if(linePaths.size() == 0)
+				{
+					mPlayPauseButton.setEnabled(false);
+				}
+				else
+				{
+					mPlayPauseButton.setEnabled(true);
 				}
 			}
 		});

@@ -3,9 +3,7 @@ Give unique filenames to recorded files based on Project, Act, Scene, Line
 Save model layer using JSON
 Expand model layer to Project Manager, Project, Act, Scene, Line
 Add error listeners, ect. to Audio Resources
-Disable play button if no recorded lines exist
 Use Title
 Multithread SceneAudioPlayer's prepare()
 Enhance audio quality
-Bugfix: play button only plays first line
 Problem: I want to pause audio playback in onStop() except for rotations
