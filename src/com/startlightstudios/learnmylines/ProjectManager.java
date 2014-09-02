@@ -20,4 +20,9 @@ public class ProjectManager {
 		}
 		return sManager;
 	}
+	
+	public void addProject(Project project)
+	{
+		mProjects.add(project);
+	}
 }

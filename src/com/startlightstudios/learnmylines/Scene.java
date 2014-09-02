@@ -12,12 +12,13 @@ public class Scene {
 	{
 		mTitle = title;
 		mAct = act;
+		mAct.getScenes().add(this);
 		lines = new ArrayList<Line>();
 	}
 	
-	public void addLine(String filename)
+	public void addLine(Line line)
 	{
-		lines.add(new Line(filename, this));
+		lines.add(line);
 		if(listener != null)
 		{
 			listener.onDataChanged(lines);
@@ -37,5 +38,11 @@ public class Scene {
 		
 		public void onDataChanged(ArrayList<Line> lines);
 	}
+	
+	public Act getAct()
+	{
+		return mAct;
+	}
+	
 
 }

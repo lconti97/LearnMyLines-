@@ -32,6 +32,8 @@ public class EditPlayPagerActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
+		createSampleCase();
 
 		setContentView(R.layout.activity_edit_play_pager);
 		mViewPager = (ViewPager)findViewById(R.id.activity_edit_play_view_pager);
@@ -99,5 +101,16 @@ public class EditPlayPagerActivity extends FragmentActivity {
 				.setText(R.string.play)
 				.setTabListener(tabListener));
 
+	}
+	
+	private void createSampleCase()
+	{
+		ProjectManager manager = ProjectManager.get();
+		manager.addProject(sampleProjectOne);
+		manager.addProject(sampleProjectTwo);
+		sampleProjectOne.addAct(sampleRJActOne);
+		sampleProjectOne.addAct(sampleRJActTwo);
+		sampleRJActOne.addScene(sampleRJSceneOne);
+		sampleRJActTwo.addScene(sampleRJSceneTwo);
 	}
 }

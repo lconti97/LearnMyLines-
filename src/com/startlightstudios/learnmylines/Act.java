@@ -14,6 +14,11 @@ public class Act {
 		mProject = project;
 		mScenes = new ArrayList<Scene>();
 	}
+	
+	public void addScene(Scene scene)
+	{
+		mScenes.add(scene);
+	}
 
 	public ArrayList<Scene> getScenes() {
 		return mScenes;

@@ -14,6 +14,11 @@ public class Project {
 		mManager = manager;
 		mActs = new ArrayList<Act>();
 	}
+	
+	public void addAct(Act act)
+	{
+		mActs.add(act);
+	}
 
 	public ProjectManager getManager() {
 		return mManager;

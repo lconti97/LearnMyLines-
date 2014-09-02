@@ -89,7 +89,7 @@ public class ScenePlayFragment extends Fragment {
 	}
 
 
-	public void playScene()
+	private void playScene()
 	{
 		ArrayList<Line> lines = mScene.getLines();
 		mPlayer.playLine(lines.get(mCurrentLineIndex));

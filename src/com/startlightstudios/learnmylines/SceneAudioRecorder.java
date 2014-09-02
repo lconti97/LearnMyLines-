@@ -47,7 +47,7 @@ public class SceneAudioRecorder extends MediaRecorder {
 	public void stop()
 	{
 		super.stop();
-		mScene.addLine(mFileName);
+		mScene.addLine(new Line(mFileName, mScene));
 	}
 
 }
