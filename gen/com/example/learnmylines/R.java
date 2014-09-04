@@ -1201,6 +1201,7 @@ containing a value of this type.
         public static final int fragment_scene_edit=0x7f03001a;
         public static final int fragment_scene_play=0x7f03001b;
         public static final int support_simple_spinner_dropdown_item=0x7f03001c;
+        public static final int text_view_project_list_project=0x7f03001d;
     }
     public static final class menu {
         public static final int scene_play=0x7f0c0000;
