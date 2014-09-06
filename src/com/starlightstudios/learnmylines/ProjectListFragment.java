@@ -27,7 +27,7 @@ public class ProjectListFragment extends Fragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup parent, 
+	public View onCreateView(LayoutInflater inflater, ViewGroup vg, 
 			Bundle savedInstanceState)
 	{
 		View v = inflater.inflate(R.layout.fragment_project_list, null);
@@ -39,8 +39,9 @@ public class ProjectListFragment extends Fragment {
 
 		for(int i = 0; i < manager.getProjects().size(); i++)
 		{
+			final Project project = manager.getProjects().get(i);
 			final NLevelItem grandParent = new NLevelItem(
-					manager.getProjects().get(i),
+					project,
 					null,
 					new NLevelView() {
 
@@ -51,15 +52,36 @@ public class ProjectListFragment extends Fragment {
 									.inflate(R.layout.list_item, null);
 							TextView tv = (TextView) view.findViewById(R.id.textView);
 							tv.setBackgroundColor(Color.GREEN);
-							String name = (String) ((Project) item.getWrappedObject())
-									.getTitle();
+							String name = project.getTitle();
 							tv.setText(name);
 							return view;
 						}
 					});		
-
-
 			list.add(grandParent);
+			
+			final ArrayList<Act> acts = project.getActs();
+			for(int j = 0; j < acts.size(); j++)
+			{
+				final Act act = acts.get(i);
+				NLevelItem parent = new NLevelItem(
+						act,
+						grandParent,
+						new NLevelView() {
+					
+					@Override
+					public View getView(NLevelItem item) {
+						View view = getActivity().getLayoutInflater().
+								inflate(R.layout.list_item, null);
+						TextView tv = (TextView) view.findViewById(R.id.textView);
+						tv.setBackgroundColor(Color.YELLOW);
+						String name = act.getTitle();
+						tv.setText(name);
+						return view;
+					}
+				});
+		
+				list.add(parent);
+			}
 
 		}
 
