@@ -12,7 +12,6 @@ public class Scene {
 	{
 		mTitle = title;
 		mAct = act;
-		mAct.getScenes().add(this);
 		lines = new ArrayList<Line>();
 	}
 	

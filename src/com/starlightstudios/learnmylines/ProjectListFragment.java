@@ -3,6 +3,7 @@ package com.starlightstudios.learnmylines;
 import java.util.ArrayList;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -51,9 +52,9 @@ public class ProjectListFragment extends Fragment {
 							View view = getActivity().getLayoutInflater()
 									.inflate(R.layout.list_item, null);
 							TextView tv = (TextView) view.findViewById(R.id.textView);
-							tv.setBackgroundColor(Color.GREEN);
 							String name = project.getTitle();
 							tv.setText(name);
+							tv.setTypeface(Typeface.DEFAULT_BOLD);
 							return view;
 						}
 					});		
@@ -73,9 +74,8 @@ public class ProjectListFragment extends Fragment {
 						View view = getActivity().getLayoutInflater().
 								inflate(R.layout.list_item, null);
 						TextView tv = (TextView) view.findViewById(R.id.textView);
-						tv.setBackgroundColor(Color.YELLOW);
 						String name = act.getTitle();
-						tv.setText(name);
+						tv.setText("\t\t" + name);
 						return view;
 					}
 				});
@@ -96,9 +96,8 @@ public class ProjectListFragment extends Fragment {
 							View view = getActivity().getLayoutInflater()
 									.inflate(R.layout.list_item, null);
 							TextView tv = (TextView) view.findViewById(R.id.textView);
-							tv.setBackgroundColor(Color.GRAY);
 							String name = scene.getTitle();
-							tv.setText(name);
+							tv.setText("\t\t\t\t" + name);
 							return view;
 						}
 					});

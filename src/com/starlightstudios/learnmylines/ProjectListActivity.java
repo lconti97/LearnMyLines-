@@ -25,6 +25,6 @@ public class ProjectListActivity extends SingleFragmentActivity {
 		sampleProjectOne.addAct(sampleRJActOne);
 		sampleProjectOne.addAct(sampleRJActTwo);
 		sampleRJActOne.addScene(sampleRJSceneOne);
-		sampleRJActTwo.addScene(sampleRJSceneTwo);
+		sampleRJActOne.addScene(sampleRJSceneTwo);
 	}
 }
