@@ -2,7 +2,7 @@ package com.starlightstudios.learnmylines;
 
 import java.util.ArrayList;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,9 +17,12 @@ import android.widget.TextView;
 import com.example.learnmylines.R;
 
 public class ProjectListFragment extends Fragment {
-	private ArrayList<NLevelItem> list;
-	private ListView listView;
-	private ProjectManager manager;
+	private static final String TAG = "ProjectListFragment";
+	
+	private ArrayList<NLevelItem> mList;
+	private ListView mListView;
+	private ProjectManager mManager;
+	private NLevelAdapter mAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -34,13 +37,13 @@ public class ProjectListFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_project_list, null);
 
 		//TODO: Change listView1's name
-		listView = (ListView)v.findViewById(R.id.listView1);
-		list = new ArrayList<NLevelItem>();
-		manager = ProjectManager.get();
+		mListView = (ListView)v.findViewById(R.id.listView1);
+		mList = new ArrayList<NLevelItem>();
+		mManager = ProjectManager.get();
 
-		for(int i = 0; i < manager.getProjects().size(); i++)
+		for(int i = 0; i < mManager.getProjects().size(); i++)
 		{
-			final Project project = manager.getProjects().get(i);
+			final Project project = mManager.getProjects().get(i);
 			final NLevelItem grandParent = new NLevelItem(
 					project,
 					null,
@@ -58,7 +61,7 @@ public class ProjectListFragment extends Fragment {
 							return view;
 						}
 					});		
-			list.add(grandParent);
+			mList.add(grandParent);
 			
 			ArrayList<Act> acts = project.getActs();
 			for(int j = 0; j < acts.size(); j++)
@@ -80,7 +83,7 @@ public class ProjectListFragment extends Fragment {
 					}
 				});
 		
-				list.add(parent);
+				mList.add(parent);
 				
 				ArrayList<Scene> scenes = act.getScenes();
 				for(int n = 0; n < scenes.size(); n++)
@@ -102,21 +105,28 @@ public class ProjectListFragment extends Fragment {
 						}
 					});
 				
-					list.add(child);
+					mList.add(child);
 				}
 			}
 
 		}
 
-		NLevelAdapter adapter = new NLevelAdapter(list);
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(new OnItemClickListener() {
+		mAdapter = new NLevelAdapter(mList);
+		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				((NLevelAdapter)listView.getAdapter()).toggle(arg2);
-				((NLevelAdapter)listView.getAdapter()).getFilter().filter();
+				
+				NLevelItem temp = (NLevelItem) mAdapter.filtered.get(arg2);
+				if (temp.getWrappedObject() instanceof Scene)
+				{
+					Intent i = new Intent(getActivity(), EditPlayPagerActivity.class);
+					getActivity().startActivity(i);
+				}
+				mAdapter.toggle(arg2);
+				mAdapter.getFilter().filter();
 
 			}
 		});
