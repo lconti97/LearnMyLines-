@@ -44,5 +44,10 @@ public class Scene {
 		return mAct;
 	}
 	
+	public String getTitle()
+	{
+		return mTitle;
+	}
+	
 
 }

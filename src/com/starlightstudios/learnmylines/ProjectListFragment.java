@@ -59,10 +59,10 @@ public class ProjectListFragment extends Fragment {
 					});		
 			list.add(grandParent);
 			
-			final ArrayList<Act> acts = project.getActs();
+			ArrayList<Act> acts = project.getActs();
 			for(int j = 0; j < acts.size(); j++)
 			{
-				final Act act = acts.get(i);
+				final Act act = acts.get(j);
 				NLevelItem parent = new NLevelItem(
 						act,
 						grandParent,
@@ -81,6 +81,30 @@ public class ProjectListFragment extends Fragment {
 				});
 		
 				list.add(parent);
+				
+				ArrayList<Scene> scenes = act.getScenes();
+				for(int n = 0; n < scenes.size(); n++)
+				{
+					final Scene scene = scenes.get(n);
+					NLevelItem child = new NLevelItem(
+							scene,
+							parent,
+							new NLevelView() {
+						
+						@Override
+						public View getView(NLevelItem item) {
+							View view = getActivity().getLayoutInflater()
+									.inflate(R.layout.list_item, null);
+							TextView tv = (TextView) view.findViewById(R.id.textView);
+							tv.setBackgroundColor(Color.GRAY);
+							String name = scene.getTitle();
+							tv.setText(name);
+							return view;
+						}
+					});
+				
+					list.add(child);
+				}
 			}
 
 		}
