@@ -18,6 +18,7 @@ import com.example.learnmylines.R;
 public class ProjectListFragment extends Fragment {
 	private ArrayList<NLevelItem> list;
 	private ListView listView;
+	private ProjectManager manager;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -34,30 +35,34 @@ public class ProjectListFragment extends Fragment {
 		//TODO: Change listView1's name
 		listView = (ListView)v.findViewById(R.id.listView1);
 		list = new ArrayList<NLevelItem>();
+		manager = ProjectManager.get();
 
-		final NLevelItem grandParent = new NLevelItem(
-				ProjectListActivity.sampleProjectOne,
-				null,
-				new NLevelView() {
+		for(int i = 0; i < manager.getProjects().size(); i++)
+		{
+			final NLevelItem grandParent = new NLevelItem(
+					manager.getProjects().get(i),
+					null,
+					new NLevelView() {
 
-					@Override
-					public View getView(NLevelItem item) {
-						//TODO: find a different list item style
-						View view = getActivity().getLayoutInflater()
-								.inflate(R.layout.list_item, null);
-						TextView tv = (TextView) view.findViewById(R.id.textView);
-						tv.setBackgroundColor(Color.GREEN);
-						String name = (String) ((Project) item.getWrappedObject())
-								.getTitle();
-						tv.setText(name);
-						return view;
-					}
-				});		
-		
-		list.add(grandParent);
-		
-		
-		
+						@Override
+						public View getView(NLevelItem item) {
+							//TODO: find a different list item style
+							View view = getActivity().getLayoutInflater()
+									.inflate(R.layout.list_item, null);
+							TextView tv = (TextView) view.findViewById(R.id.textView);
+							tv.setBackgroundColor(Color.GREEN);
+							String name = (String) ((Project) item.getWrappedObject())
+									.getTitle();
+							tv.setText(name);
+							return view;
+						}
+					});		
+
+
+			list.add(grandParent);
+
+		}
+
 		NLevelAdapter adapter = new NLevelAdapter(list);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
@@ -67,7 +72,7 @@ public class ProjectListFragment extends Fragment {
 					long arg3) {
 				((NLevelAdapter)listView.getAdapter()).toggle(arg2);
 				((NLevelAdapter)listView.getAdapter()).getFilter().filter();
-				
+
 			}
 		});
 		return v;
