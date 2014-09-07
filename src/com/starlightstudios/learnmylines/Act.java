@@ -8,20 +8,25 @@ public class Act {
 	private Project mProject;
 	private String mTitle;
 	
-	public Act(String title, Project project)
+	public Act(String title)
 	{
 		mTitle = title;
-		mProject = project;
 		mScenes = new ArrayList<Scene>();
 	}
 	
 	public void addScene(Scene scene)
 	{
 		mScenes.add(scene);
+		scene.setAct(this);
 	}
 
 	public ArrayList<Scene> getScenes() {
 		return mScenes;
+	}
+	
+	public ProjectManager getManager()
+	{
+		return mProject.getManager();
 	}
 
 	public Project getProject() {
@@ -38,6 +43,13 @@ public class Act {
 
 	public void setTitle(String title) {
 		mTitle = title;
+	}
+
+	public int getSceneIndex(Scene s) {
+		for(int i = 0; i < mScenes.size(); i++)
+			if(mScenes.get(i).equals(s))
+				return i;
+		return -1;
 	}
 	
 	

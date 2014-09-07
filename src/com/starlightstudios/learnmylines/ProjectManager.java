@@ -24,10 +24,24 @@ public class ProjectManager {
 	public void addProject(Project project)
 	{
 		mProjects.add(project);
+		project.setManager(this);
 	}
 	
 	public ArrayList<Project> getProjects()
 	{
 		return mProjects;
 	}
+	
+	public int getProjectIndex(Project project)
+	{
+		for(int i = 0; i < mProjects.size(); i++)
+		{
+			if(mProjects.get(i).equals(project))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+			
 }

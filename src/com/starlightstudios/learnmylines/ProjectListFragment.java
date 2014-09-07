@@ -26,6 +26,8 @@ public class ProjectListFragment extends Fragment {
 	private static final String TAG = "ProjectListFragment";
 	private static final String DIALOG_TITLE = "title";
 	private static final int REQUEST_TITLE = 0;
+	public static final String EXTRA_SCENE_INDEX = 
+			"com.starlightstudios.learnmylines.scene_index";
 
 	private ArrayList<NLevelItem> mList;
 	private ListView mListView;
@@ -59,9 +61,16 @@ public class ProjectListFragment extends Fragment {
 					long arg3) {
 
 				NLevelItem temp = (NLevelItem) mAdapter.filtered.get(arg2);
+				//if a scene is clicked, launch EditPlayPagerActivity
 				if (temp.getWrappedObject() instanceof Scene)
 				{
+					Scene s = (Scene) temp.getWrappedObject();
 					Intent i = new Intent(getActivity(), EditPlayPagerActivity.class);
+					int projectIndex = mManager.getProjectIndex(s.getProject());
+					int actIndex = s.getProject().getActIndex(s.getAct());
+					int sceneIndex = s.getAct().getSceneIndex(s);
+					int[] index = {projectIndex, actIndex, sceneIndex};
+					i.putExtra(EXTRA_SCENE_INDEX, index);
 					getActivity().startActivity(i);
 				}
 				mAdapter.toggle(arg2);
@@ -102,8 +111,7 @@ public class ProjectListFragment extends Fragment {
 		if(requestCode == REQUEST_TITLE)
 		{
 			Project p = new Project(
-					data.getStringExtra(ProjectTitleDialog.EXTRA_TITLE),
-					mManager);
+					data.getStringExtra(ProjectTitleDialog.EXTRA_TITLE));
 			mManager.addProject(p);
 			
 			updateList();

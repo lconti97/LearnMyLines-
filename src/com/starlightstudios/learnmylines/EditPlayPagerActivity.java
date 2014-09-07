@@ -13,13 +13,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 
 import com.example.learnmylines.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class EditPlayPagerActivity extends FragmentActivity {
+	private static final String TAG = "EditPlayPagerActivity";
 
-	
+	private Scene mScene;
 	private ViewPager mViewPager;
 
 	@Override
@@ -27,7 +29,16 @@ public class EditPlayPagerActivity extends FragmentActivity {
 	{
 		super.onCreate(savedInstanceState);
 		
-
+		String s = "";
+		int[] sceneIndex = getIntent().getExtras().
+				getIntArray(ProjectListFragment.EXTRA_SCENE_INDEX);
+		for(int i = 0; i < sceneIndex.length; i++)
+			s += sceneIndex[i] + " ";
+		Log.i(TAG, "Scene index: " + s);
+		mScene = ProjectManager.get()
+				.getProjects().get(sceneIndex[0])
+				.getActs().get(sceneIndex[1])
+				.getScenes().get(sceneIndex[2]);
 
 		setContentView(R.layout.activity_edit_play_pager);
 		mViewPager = (ViewPager)findViewById(R.id.activity_edit_play_view_pager);

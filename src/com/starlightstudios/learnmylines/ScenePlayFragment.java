@@ -28,9 +28,15 @@ public class ScenePlayFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
 	{
+		int[] sceneIndex = getActivity().getIntent().
+				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
+		mScene = ProjectManager.get()
+				.getProjects().get(sceneIndex[0])
+				.getActs().get(sceneIndex[1])
+				.getScenes().get(sceneIndex[2]);
+		
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 
-		mScene = ProjectListActivity.sampleRJSceneOne;
 		mCurrentLineIndex = 0;
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);

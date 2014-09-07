@@ -8,16 +8,16 @@ public class Project {
 	private ArrayList<Act> mActs;
 	private String mTitle;
 	
-	public Project(String title, ProjectManager manager)
+	public Project(String title)
 	{
 		mTitle = title;
-		mManager = manager;
 		mActs = new ArrayList<Act>();
 	}
 	
 	public void addAct(Act act)
 	{
 		mActs.add(act);
+		act.setProject(this);
 	}
 
 	public ProjectManager getManager() {
@@ -48,6 +48,13 @@ public class Project {
 	public String toString()
 	{
 		return mTitle;
+	}
+
+	public int getActIndex(Act act) {
+		for(int i = 0; i < mActs.size(); i ++)
+			if(mActs.get(i).equals(act))
+				return i;
+		return -1;
 	}
 	
 	

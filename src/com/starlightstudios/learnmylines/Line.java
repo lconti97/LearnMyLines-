@@ -22,6 +22,21 @@ public class Line {
 	public Scene getScene() {
 		return mScene;
 	}
+	
+	public Act getAct()
+	{
+		return mScene.getAct();
+	}
+	
+	public Project getProject()
+	{
+		return mScene.getProject();
+	}
+	
+	public ProjectManager getManager()
+	{
+		return mScene.getManager();
+	}
 
 	public void setScene(Scene scene) {
 		mScene = scene;

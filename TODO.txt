@@ -8,3 +8,5 @@ Multithread SceneAudioPlayer's prepare()
 Enhance audio quality
 Problem: I want to pause audio playback in onStop() except for rotations
 Stop recording on swipe
+Enable ancesteral navigation
+Add delete function
