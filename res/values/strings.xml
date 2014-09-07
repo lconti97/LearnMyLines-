@@ -8,5 +8,7 @@
     <string name="edit">Edit</string>
     <string name="record">Record</string>
     <string name="stop">Stop</string>
+    <string name="new_project">New Project</string>
+    <string name="project_title">Project title:</string>
 
 </resources>
