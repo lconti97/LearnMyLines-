@@ -24,8 +24,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 	private Scene mScene;
 	private ViewPager mViewPager;
-	
-	public ArrayAdapter<Line> mLineHistoryAdapter;
+	private ArrayAdapter<Line> mLineHistoryAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -116,9 +115,9 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 	}
 	
-	public void doStuff()
+	public ArrayAdapter<Line> getLineHistoryAdapter()
 	{
-		
+		return mLineHistoryAdapter;
 	}
 	
 

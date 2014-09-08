@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.learnmylines.R;
 import com.starlightstudios.learnmylines.Scene.OnDataChangedListener;
@@ -23,6 +25,8 @@ public class ScenePlayFragment extends Fragment {
 	private Scene mScene;
 	private boolean mPlaying = false;
 	private int mCurrentLineIndex;
+	private ListView mLineHistory;
+	private ArrayAdapter<Line> mLineHistoryAdapter;
 
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -37,6 +41,11 @@ public class ScenePlayFragment extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 
+		mLineHistory = (ListView) v.findViewById(R.id.fragment_scene_play_listView);
+		EditPlayPagerActivity a = (EditPlayPagerActivity)getActivity();
+		mLineHistoryAdapter = a.getLineHistoryAdapter();
+		mLineHistory.setAdapter(mLineHistoryAdapter);
+		
 		mCurrentLineIndex = 0;
 
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);

@@ -42,7 +42,7 @@ public class SceneEditFragment extends Fragment{
 
 		mLineHistory = (ListView)v.findViewById(R.id.fragment_scene_edit_ListView);
 		EditPlayPagerActivity a = (EditPlayPagerActivity)getActivity();
-		mLineHistoryAdapter = a.mLineHistoryAdapter;
+		mLineHistoryAdapter = a.getLineHistoryAdapter();
 		mLineHistory.setAdapter(mLineHistoryAdapter);
 		
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
