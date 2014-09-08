@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.example.learnmylines.R;
 
@@ -23,6 +24,8 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 	private Scene mScene;
 	private ViewPager mViewPager;
+	
+	public ArrayAdapter<Line> mLineHistoryAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -39,6 +42,11 @@ public class EditPlayPagerActivity extends FragmentActivity {
 				.getProjects().get(sceneIndex[0])
 				.getActs().get(sceneIndex[1])
 				.getScenes().get(sceneIndex[2]);
+		
+		mLineHistoryAdapter = new ArrayAdapter<Line>(
+				this, 
+				android.R.layout.simple_list_item_1,
+				mScene.getLines());
 
 		setContentView(R.layout.activity_edit_play_pager);
 		mViewPager = (ViewPager)findViewById(R.id.activity_edit_play_view_pager);
@@ -106,6 +114,11 @@ public class EditPlayPagerActivity extends FragmentActivity {
 				.setText(R.string.play)
 				.setTabListener(tabListener));
 
+	}
+	
+	public void doStuff()
+	{
+		
 	}
 	
 

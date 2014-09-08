@@ -1,7 +1,6 @@
 Give unique filenames to recorded files based on Project, Act, Scene, Line
 	Ensure Project, Act, Scene, Line combinations are unique
 Save model layer using JSON
-Expand model layer to Project Manager, Project, Act, Scene, Line
 Add error listeners, ect. to Audio Resources
 Use Title
 Multithread SceneAudioPlayer's prepare()
@@ -10,3 +9,6 @@ Problem: I want to pause audio playback in onStop() except for rotations
 Stop recording on swipe
 Enable ancesteral navigation
 Add delete function
+Pop up keyboard when the new Project dialog is created
+Add rename function
+Expand a newly created Project

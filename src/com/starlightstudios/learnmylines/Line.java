@@ -4,11 +4,13 @@ public class Line {
 
 	private String mFileName;
 	private Scene mScene;
+	private String mTitle;
 	
-	public Line(String filename, Scene scene)
+	public Line(String filename, Scene scene, String title)
 	{
 		mFileName = filename;
 		mScene = scene;
+		mTitle = title;
 	}
 
 	public String getFileName() {
@@ -42,5 +44,9 @@ public class Line {
 		mScene = scene;
 	}
 	
+	public String toString()
+	{
+		return mTitle;
+	}
 	
 }

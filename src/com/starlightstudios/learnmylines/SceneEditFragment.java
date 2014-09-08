@@ -1,5 +1,6 @@
 package com.starlightstudios.learnmylines;
 
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -7,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.example.learnmylines.R;
 
@@ -18,11 +22,15 @@ public class SceneEditFragment extends Fragment{
 	private SceneAudioRecorder mRecorder;
 	private boolean mRecording = false;
 	private Scene mScene;
+	private ListView mLineHistory;
+	private ArrayAdapter<Line> mLineHistoryAdapter;
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
 	{
+		
 		int[] sceneIndex = getActivity().getIntent().
 				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
 		mScene = ProjectManager.get()
@@ -32,6 +40,11 @@ public class SceneEditFragment extends Fragment{
 		
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 
+		mLineHistory = (ListView)v.findViewById(R.id.fragment_scene_edit_ListView);
+		EditPlayPagerActivity a = (EditPlayPagerActivity)getActivity();
+		mLineHistoryAdapter = a.mLineHistoryAdapter;
+		mLineHistory.setAdapter(mLineHistoryAdapter);
+		
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_recordButton);
 		//if mRecording, the fragment has been rotated
 		if(!mRecording)
@@ -95,5 +108,6 @@ public class SceneEditFragment extends Fragment{
 		mRecorder.reset();
 		mRecordButton.setText(R.string.record);
 		mRecording = false;
+		mLineHistoryAdapter.notifyDataSetChanged();
 	}
 }

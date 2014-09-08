@@ -12,7 +12,8 @@ public class SceneAudioRecorder extends MediaRecorder {
 
 	private Scene mScene;
 	private String mFileName;
-
+	private int mLineNumber = 0;
+	
 	public boolean start(Scene scene)
 	{
 		try
@@ -47,7 +48,8 @@ public class SceneAudioRecorder extends MediaRecorder {
 	public void stop()
 	{
 		super.stop();
-		mScene.addLine(new Line(mFileName, mScene));
+		mScene.addLine(new Line(mFileName, mScene, "Line " + mLineNumber));
+		mLineNumber++;
 	}
 
 }

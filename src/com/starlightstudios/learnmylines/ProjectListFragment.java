@@ -113,6 +113,10 @@ public class ProjectListFragment extends Fragment {
 			Project p = new Project(
 					data.getStringExtra(ProjectTitleDialog.EXTRA_TITLE));
 			mManager.addProject(p);
+			Act a = new Act("Act I");
+			p.addAct(a);
+			Scene s = new Scene("Scene I");
+			a.addScene(s);
 			
 			updateList();
 		}
