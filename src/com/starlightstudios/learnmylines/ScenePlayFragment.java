@@ -48,7 +48,8 @@ public class ScenePlayFragment extends Fragment {
 		
 		mCurrentLineIndex = 0;
 
-		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_playButton);
+		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+				.findViewById(R.id.button_center);
 		//if mPlaying, the fragment has been rotated 
 		if(!mPlaying)
 		{
