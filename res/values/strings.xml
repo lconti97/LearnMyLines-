@@ -12,5 +12,7 @@
     <string name="project_title">Project title:</string>
     <string name="repeat">Repeat</string>
     <string name="next">Next</string>
+    <string name="undo">Undo</string>
+    <string name="done">Done</string>
 
 </resources>

@@ -84,6 +84,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 			}
 		});
 
+	
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		ActionBar.TabListener tabListener = new TabListener() {
@@ -118,6 +119,10 @@ public class EditPlayPagerActivity extends FragmentActivity {
 	public ArrayAdapter<Line> getLineHistoryAdapter()
 	{
 		return mLineHistoryAdapter;
+	}
+	
+	public ViewPager getViewPager() {
+		return mViewPager;
 	}
 	
 

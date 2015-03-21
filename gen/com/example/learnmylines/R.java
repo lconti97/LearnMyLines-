@@ -1111,8 +1111,8 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int fragmentContainer=0x7f05003d;
-        public static final int fragment_scene_edit_ListView=0x7f050040;
-        public static final int fragment_scene_edit_recordButton=0x7f050041;
+        public static final int fragment_scene_edit_ListView=0x7f050041;
+        public static final int fragment_scene_edit_buttonBar=0x7f050040;
         public static final int fragment_scene_play_buttonBar=0x7f050042;
         public static final int fragment_scene_play_listView=0x7f050043;
         public static final int home=0x7f050014;
@@ -1263,6 +1263,7 @@ containing a value of this type.
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
         public static final int action_settings=0x7f0a000e;
         public static final int app_name=0x7f0a000d;
+        public static final int done=0x7f0a0019;
         public static final int edit=0x7f0a0011;
         public static final int new_project=0x7f0a0014;
         public static final int next=0x7f0a0017;
@@ -1272,6 +1273,7 @@ containing a value of this type.
         public static final int record=0x7f0a0012;
         public static final int repeat=0x7f0a0016;
         public static final int stop=0x7f0a0013;
+        public static final int undo=0x7f0a0018;
     }
     public static final class style {
         /** 
