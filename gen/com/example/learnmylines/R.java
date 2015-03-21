@@ -1110,8 +1110,8 @@ containing a value of this type.
         public static final int fragmentContainer=0x7f05003d;
         public static final int fragment_scene_edit_ListView=0x7f050040;
         public static final int fragment_scene_edit_recordButton=0x7f050041;
-        public static final int fragment_scene_play_listView=0x7f050042;
-        public static final int fragment_scene_play_playButton=0x7f050043;
+        public static final int fragment_scene_play_buttonBar=0x7f050042;
+        public static final int fragment_scene_play_listView=0x7f050043;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
@@ -1211,6 +1211,7 @@ containing a value of this type.
         public static final int fragment_scene_play=0x7f03001d;
         public static final int list_item=0x7f03001e;
         public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int three_button_bar=0x7f030020;
     }
     public static final class menu {
         public static final int fragment_project_list=0x7f0c0000;

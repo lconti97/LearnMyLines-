@@ -12,3 +12,4 @@ Add delete function
 Pop up keyboard when the new Project dialog is created
 Add rename function
 Expand a newly created Project
+Ensure speakers are unique

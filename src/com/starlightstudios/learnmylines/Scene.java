@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 public class Scene implements Serializable{
 	private String mTitle;
-	private ArrayList<Line> lines;
-	private Scene.OnDataChangedListener listener;
+	private ArrayList<Line> mLines;
+	private Scene.OnDataChangedListener mListener;
 	private Act mAct;
+	private ArrayList<String> mSpeakers;
 	
 	public Scene(String title)
 	{
 		mTitle = title;
-		lines = new ArrayList<Line>();
+		mLines = new ArrayList<Line>();
+		mSpeakers = new ArrayList<String>();
 	}
 	
 	public void setAct(Act act)
@@ -22,21 +24,21 @@ public class Scene implements Serializable{
 	
 	public void addLine(Line line)
 	{
-		lines.add(line);
+		mLines.add(line);
 		line.setScene(this);
-		if(listener != null)
+		if(mListener != null)
 		{
-			listener.onDataChanged(lines);
+			mListener.onDataChanged(mLines);
 		}
 	}
 
 	public ArrayList<Line> getLines() {
-		return lines;
+		return mLines;
 	}
 	
 	public void setOnDataChangedListener(OnDataChangedListener l)
 	{
-		listener = l;
+		mListener = l;
 	}
 	
 	public interface OnDataChangedListener {
@@ -52,6 +54,16 @@ public class Scene implements Serializable{
 	public Project getProject()
 	{
 		return mAct.getProject();
+	}
+	
+	public ArrayList<String> getSpeakers()
+	{
+		return mSpeakers;
+	}
+	
+	public void addSpeaker(String name)
+	{
+		mSpeakers.add(name);
 	}
 	
 	public ProjectManager getManager()
