@@ -19,8 +19,10 @@ import com.starlightstudios.learnmylines.Scene.OnDataChangedListener;
 
 public class ScenePlayFragment extends Fragment {
 	private static final String TAG = "ScenePlayFragment";
-	
+
 	private Button mPlayPauseButton;
+	private Button mRepeatButton;
+	private Button mNextButton;
 	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
 	private boolean mPlaying = false;
@@ -38,18 +40,43 @@ public class ScenePlayFragment extends Fragment {
 				.getProjects().get(sceneIndex[0])
 				.getActs().get(sceneIndex[1])
 				.getScenes().get(sceneIndex[2]);
-		
+
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 
 		mLineHistory = (ListView) v.findViewById(R.id.fragment_scene_play_listView);
 		EditPlayPagerActivity a = (EditPlayPagerActivity)getActivity();
 		mLineHistoryAdapter = a.getLineHistoryAdapter();
 		mLineHistory.setAdapter(mLineHistoryAdapter);
-		
+
 		mCurrentLineIndex = 0;
 
+		mRepeatButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+				.findViewById(R.id.button_left);
 		mPlayPauseButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_center);
+		mNextButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+				.findViewById(R.id.button_right);
+
+		mRepeatButton.setText(R.string.repeat);
+		mNextButton.setText(R.string.next);
+
+		mRepeatButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mPlayer.seekTo(0);
+			}
+		});
+
+		mNextButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				nextLine();
+			}
+		});
+
+
 		//if mPlaying, the fragment has been rotated 
 		if(!mPlaying)
 		{
@@ -85,9 +112,9 @@ public class ScenePlayFragment extends Fragment {
 				}
 			}
 		});
-		
+
 		mScene.setOnDataChangedListener(new OnDataChangedListener() {
-			
+
 			@Override
 			public void onDataChanged(ArrayList<Line> linePaths) {
 				if(linePaths.size() == 0)
@@ -113,20 +140,24 @@ public class ScenePlayFragment extends Fragment {
 
 			@Override
 			public void onCompletion(MediaPlayer mp) {
-				mPlayer.stop();
-				// If the next line exists
-				if(mCurrentLineIndex + 1  < mScene.getLines().size())
-				{
-					mCurrentLineIndex++;
-					mPlayer.playLine(mScene.getLines().get(mCurrentLineIndex));
-				}
-				else
-				{
-					onPlayComplete();
-					mCurrentLineIndex = 0;
-				}
+				nextLine();
 			}
 		});
+	}
+
+	private void nextLine() {
+		mPlayer.stop();
+		// If the next line exists
+		if(mCurrentLineIndex + 1  < mScene.getLines().size())
+		{
+			mCurrentLineIndex++;
+			mPlayer.playLine(mScene.getLines().get(mCurrentLineIndex));
+		}
+		else
+		{
+			onPlayComplete();
+			mCurrentLineIndex = 0;
+		}
 	}
 
 	@Override
