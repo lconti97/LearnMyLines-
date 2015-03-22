@@ -14,5 +14,8 @@
     <string name="next">Next</string>
     <string name="undo">Undo</string>
     <string name="done">Done</string>
+    <string name="check_line">Check Line</string>
+    <string name="me">Me</string>
+    <string name="not_me">Not Me</string>
 
 </resources>

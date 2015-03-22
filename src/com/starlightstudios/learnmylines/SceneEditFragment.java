@@ -1,5 +1,6 @@
 package com.starlightstudios.learnmylines;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,8 +20,11 @@ public class SceneEditFragment extends Fragment{
 	private Button mRecordButton;
 	private Button mUndoButton;
 	private Button mDoneButton;
+	private Button mCharMeButton;
+	private Button mCharNotMeButton;
 	private SceneAudioRecorder mRecorder;
 	private boolean mRecording = false;
+	private String mSpeaker;
 	private Scene mScene;
 	private ListView mLineHistory;
 	private ArrayAdapter<Line> mLineHistoryAdapter;
@@ -31,8 +35,8 @@ public class SceneEditFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
 	{
-
-		int[] sceneIndex = getActivity().getIntent().
+		Activity c = getActivity();
+		int[] sceneIndex = c.getIntent().
 				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
 		mScene = ProjectManager.get()
 				.getProjects().get(sceneIndex[0])
@@ -43,8 +47,10 @@ public class SceneEditFragment extends Fragment{
 
 		mLineHistory = (ListView)v.findViewById(R.id.fragment_scene_edit_ListView);
 		mActivity = (EditPlayPagerActivity)getActivity();
-		mLineHistoryAdapter = mActivity.getLineHistoryAdapter();
+		mLineHistoryAdapter = mActivity.getLineListAdapter();
 		mLineHistory.setAdapter(mLineHistoryAdapter);
+		
+		mSpeaker = c.getString(R.string.me);
 
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_center);
@@ -52,6 +58,10 @@ public class SceneEditFragment extends Fragment{
 				.findViewById(R.id.button_left);
 		mDoneButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_right);
+		mCharMeButton = (Button)v.findViewById(
+				R.id.fragment_scene_edit_characterButtonMe);
+		mCharNotMeButton = (Button)v.findViewById(
+				R.id.fragment_scene_edit_characterButtonNotMe);
 
 		mUndoButton.setText(R.string.undo);
 		mDoneButton.setText(R.string.done);
@@ -73,6 +83,31 @@ public class SceneEditFragment extends Fragment{
 				mActivity.getViewPager().setCurrentItem(1, true);
 			}
 		});
+		
+		mCharMeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				v.setSelected(true);
+				mSpeaker = getString(R.string.me);
+			}
+		});
+		mCharNotMeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+//				v.setSelected(true);
+				mSpeaker = getString(R.string.not_me);
+			}
+		});
+		
+		mCharNotMeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mSpeaker = getString(R.string.not_me);
+			}
+		});
 		//if mRecording, the fragment has been rotated
 		if(!mRecording)
 		{
@@ -88,7 +123,7 @@ public class SceneEditFragment extends Fragment{
 			public void onClick(View v) {
 				if(!mRecording)
 				{
-					mRecording = mRecorder.start(mScene);
+					mRecording = mRecorder.start(mScene, mSpeaker);
 					if(mRecording)
 					{
 						mRecordButton.setText(R.string.stop);

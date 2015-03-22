@@ -24,7 +24,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 	private Scene mScene;
 	private ViewPager mViewPager;
-	private ArrayAdapter<Line> mLineHistoryAdapter;
+	private ArrayAdapter<Line> mLineListAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -42,7 +42,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 				.getActs().get(sceneIndex[1])
 				.getScenes().get(sceneIndex[2]);
 		
-		mLineHistoryAdapter = new ArrayAdapter<Line>(
+		mLineListAdapter = new ArrayAdapter<Line>(
 				this, 
 				android.R.layout.simple_list_item_1,
 				mScene.getLines());
@@ -116,9 +116,9 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 	}
 	
-	public ArrayAdapter<Line> getLineHistoryAdapter()
+	public ArrayAdapter<Line> getLineListAdapter()
 	{
-		return mLineHistoryAdapter;
+		return mLineListAdapter;
 	}
 	
 	public ViewPager getViewPager() {

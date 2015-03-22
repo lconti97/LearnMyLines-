@@ -4,13 +4,21 @@ public class Line {
 
 	private String mFileName;
 	private Scene mScene;
-	private String mTitle;
+	private String mSpeaker;
 	
-	public Line(String filename, Scene scene, String title)
+	public String getSpeaker() {
+		return mSpeaker;
+	}
+
+	public void setSpeaker(String speaker) {
+		mSpeaker = speaker;
+	}
+
+	public Line(String filename, Scene scene, String speaker)
 	{
 		mFileName = filename;
 		mScene = scene;
-		mTitle = title;
+		mSpeaker = speaker;
 	}
 
 	public String getFileName() {
@@ -46,7 +54,7 @@ public class Line {
 	
 	public String toString()
 	{
-		return mTitle;
+		return mSpeaker;
 	}
 	
 }

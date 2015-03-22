@@ -12,13 +12,14 @@ public class SceneAudioRecorder extends MediaRecorder {
 
 	private Scene mScene;
 	private String mFileName;
-	private int mLineNumber = 0;
+	private String mSpeaker;
 	
-	public boolean start(Scene scene)
+	public boolean start(Scene scene, String speaker)
 	{
 		try
 		{
 			mScene = scene;
+			mSpeaker = speaker;
 			setAudioSource(MediaRecorder.AudioSource.MIC);
 			setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 			setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -48,8 +49,7 @@ public class SceneAudioRecorder extends MediaRecorder {
 	public void stop()
 	{
 		super.stop();
-		mScene.addLine(new Line(mFileName, mScene, "Line " + mLineNumber));
-		mLineNumber++;
+		mScene.addLine(new Line(mFileName, mScene, mSpeaker));
 	}
 
 }
