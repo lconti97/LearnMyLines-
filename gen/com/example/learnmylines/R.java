@@ -1306,11 +1306,17 @@ containing a value of this type.
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0b008b;
-        /**  Application theme. 
+        /**      <style name="OrangeActionBarTab" 
+         parent="@android:style/Widget.Holo.Light.ActionBar.TabView"> 
+         <item name="android:">#ffbb33</item> 
+     </style> 
+ Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b008e;
         public static final int OrangeActionBar=0x7f0b008d;
+        /**          <item name="android:actionBarTabStyle">@style/OrangeActionBarTab</item> 
+         */
         public static final int OrangeActionBarTheme=0x7f0b008c;
         /**  Mimic text appearance in select_dialog_item.xml 
          */

@@ -20,6 +20,8 @@
     <style name="OrangeActionBar"
         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#ff8800</item>
+        <item name="android:backgroundStacked">#ffbb33</item>
+      
     </style>
     
     <!-- Application theme. -->
