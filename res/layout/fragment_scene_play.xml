@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true" />
 
     <ListView
-        android:id="@+id/fragment_scene_play_listView"
+        android:id="@+id/fragment_scene_play_lineList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/fragment_scene_play_buttonBar" >

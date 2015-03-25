@@ -1,17 +1,20 @@
 package com.starlightstudios.learnmylines;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
 import com.example.learnmylines.R;
 
 public class SceneEditFragment extends Fragment{
@@ -26,15 +29,25 @@ public class SceneEditFragment extends Fragment{
 	private boolean mRecording = false;
 	private String mSpeaker;
 	private Scene mScene;
-	private ListView mLineHistory;
-	private ArrayAdapter<Line> mLineHistoryAdapter;
+	private ListView mLineList;
+	private ArrayAdapter<Line> mLineListAdapter;
 	private EditPlayPagerActivity mActivity;
 
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
 	{
+		setHasOptionsMenu(true);
+		
+		Log.i(TAG, "Parent Activity Name = " + NavUtils.getParentActivityName(getActivity()));
+		
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+				&& NavUtils.getParentActivityName(getActivity()) != null) {
+			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
+		
 		Activity c = getActivity();
 		int[] sceneIndex = c.getIntent().
 				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
@@ -45,10 +58,10 @@ public class SceneEditFragment extends Fragment{
 
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 
-		mLineHistory = (ListView)v.findViewById(R.id.fragment_scene_edit_ListView);
+		mLineList = (ListView)v.findViewById(R.id.fragment_scene_edit_lineList);
 		mActivity = (EditPlayPagerActivity)getActivity();
-		mLineHistoryAdapter = mActivity.getLineListAdapter();
-		mLineHistory.setAdapter(mLineHistoryAdapter);
+		mLineListAdapter = mActivity.getLineListAdapter();
+		mLineList.setAdapter(mLineListAdapter);
 		
 		mSpeaker = c.getString(R.string.me);
 
@@ -143,6 +156,18 @@ public class SceneEditFragment extends Fragment{
 		return v;
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			if (NavUtils.getParentActivityName(getActivity()) != null) {
+				NavUtils.navigateUpFromSameTask(getActivity());
+			}
+			return true;
+		default: 
+			return super.onOptionsItemSelected(item);
+		}
+	};
 
 	@Override
 	public void onDestroy()
@@ -171,7 +196,7 @@ public class SceneEditFragment extends Fragment{
 			mRecorder.reset();
 			mRecordButton.setText(R.string.record);
 			mRecording = false;
-			mLineHistoryAdapter.notifyDataSetChanged();
+			mLineListAdapter.notifyDataSetChanged();
 		}
 	}
 }

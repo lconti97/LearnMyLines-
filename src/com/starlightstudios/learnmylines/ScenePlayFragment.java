@@ -6,9 +6,10 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -60,11 +61,11 @@ public class ScenePlayFragment extends Fragment {
 		}
 	};
 	private View.OnClickListener mCheckLineListener = new View.OnClickListener() {
-		
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	};
 
@@ -72,6 +73,8 @@ public class ScenePlayFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
 	{
+		setHasOptionsMenu(true);
+
 		int[] sceneIndex = getActivity().getIntent().
 				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
 		mScene = ProjectManager.get()
@@ -81,7 +84,7 @@ public class ScenePlayFragment extends Fragment {
 
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 
-		mLineList = (ListView) v.findViewById(R.id.fragment_scene_play_listView);
+		mLineList = (ListView) v.findViewById(R.id.fragment_scene_play_lineList);
 		EditPlayPagerActivity a = (EditPlayPagerActivity)getActivity();
 		mLineListAdapter = a.getLineListAdapter();
 		mLineList.setAdapter(mLineListAdapter);
@@ -95,7 +98,7 @@ public class ScenePlayFragment extends Fragment {
 				.findViewById(R.id.button_center);
 		mRightButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_right);
-		
+
 		switchButtons();
 
 		if(mScene.getLines().size() == 0)
@@ -162,7 +165,7 @@ public class ScenePlayFragment extends Fragment {
 			mLeftButton.setText(R.string.repeat);
 			mCenterButton.setText(R.string.next);
 			mRightButton.setText(R.string.check_line);
-			
+
 			mLeftButton.setOnClickListener(mRepeatListener);
 			mCenterButton.setOnClickListener(mNextListener);
 			mRightButton.setOnClickListener(mCheckLineListener);
@@ -174,19 +177,32 @@ public class ScenePlayFragment extends Fragment {
 			else
 				mCenterButton.setText(R.string.pause);
 			mRightButton.setText(R.string.next);
-			
+
 			mLeftButton.setOnClickListener(mRepeatListener);
 			mCenterButton.setOnClickListener(mPlayListener);
 			mRightButton.setOnClickListener(mNextListener);
 		}
 	}
-	
+
 	private boolean isMyLine() {
 		if(mCurrentLineIndex < mScene.getLines().size() &&
 				mScene.getLines().get(mCurrentLineIndex).getSpeaker() == getString(R.string.me))
 			return true;
 		return false;
 	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			if (NavUtils.getParentActivityName(getActivity()) != null) {
+				NavUtils.navigateUpFromSameTask(getActivity());
+			}
+			return true;
+		default: 
+			return super.onOptionsItemSelected(item);
+		}
+	};
 
 	@Override
 	public void onDestroy()

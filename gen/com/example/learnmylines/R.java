@@ -1111,13 +1111,13 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
         public static final int fragmentContainer=0x7f05003d;
-        public static final int fragment_scene_edit_ListView=0x7f050044;
         public static final int fragment_scene_edit_buttonBar=0x7f050040;
         public static final int fragment_scene_edit_characterButtonMe=0x7f050042;
         public static final int fragment_scene_edit_characterButtonNotMe=0x7f050043;
         public static final int fragment_scene_edit_characterButtons=0x7f050041;
+        public static final int fragment_scene_edit_lineList=0x7f050044;
         public static final int fragment_scene_play_buttonBar=0x7f050045;
-        public static final int fragment_scene_play_listView=0x7f050046;
+        public static final int fragment_scene_play_lineList=0x7f050046;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;

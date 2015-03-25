@@ -36,11 +36,10 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/fragment_scene_edit_ListView"
+        android:id="@+id/fragment_scene_edit_lineList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@id/fragment_scene_edit_characterButtons"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:layout_above="@id/fragment_scene_edit_characterButtons" >
     </ListView>
 
 </RelativeLayout>
