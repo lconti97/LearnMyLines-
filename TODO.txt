@@ -1,3 +1,4 @@
+Add an empty view to LinesList
 Show that a speaker's button is selected
 Give unique filenames to recorded files based on Project, Act, Scene, Line
 	Ensure Project, Act, Scene, Line combinations are unique

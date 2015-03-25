@@ -40,9 +40,7 @@ public class SceneEditFragment extends Fragment{
 			Bundle savedInstanceState)
 	{
 		setHasOptionsMenu(true);
-		
-		Log.i(TAG, "Parent Activity Name = " + NavUtils.getParentActivityName(getActivity()));
-		
+				
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
 				&& NavUtils.getParentActivityName(getActivity()) != null) {
 			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
