@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 import com.example.learnmylines.R;
 
 public class SceneEditFragment extends Fragment{
@@ -43,7 +45,7 @@ public class SceneEditFragment extends Fragment{
 				
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
 				&& NavUtils.getParentActivityName(getActivity()) != null) {
-			getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+			((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
 		Activity c = getActivity();

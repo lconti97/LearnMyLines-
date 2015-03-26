@@ -1,26 +1,27 @@
 package com.starlightstudios.learnmylines;
 
+
+
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
-import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBar.TabListener;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import com.example.learnmylines.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class EditPlayPagerActivity extends FragmentActivity {
+public class EditPlayPagerActivity extends ActionBarActivity {
 	private static final String TAG = "EditPlayPagerActivity";
 
 	private Scene mScene;
@@ -54,7 +55,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 
 			@Override
 			public void onPageSelected(int pos) {
-				getActionBar().setSelectedNavigationItem(pos);
+				getSupportActionBar().setSelectedNavigationItem(pos);
 			}
 
 			@Override
@@ -86,7 +87,7 @@ public class EditPlayPagerActivity extends FragmentActivity {
 		});
 
 	
-		ActionBar actionBar = getActionBar();
+		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		ActionBar.TabListener tabListener = new TabListener() {
 

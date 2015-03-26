@@ -1,32 +1,18 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+    <style name="HoloTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/HoloActionBar</item>
     </style>
 
-    <style name="OrangeActionBarTheme"
-        parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/OrangeActionBar</item>
+    <style name="HoloActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#ff9800</item>
+        <item name="android:backgroundStacked">#ff9800</item>
     </style>
-    
-    <style name="OrangeActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#ff8800</item>
-        <item name="android:backgroundStacked">#ffbb33</item>
-      
-    </style>
-    
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
+    <style name="Theme.Custom" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#ff00bcd4</item>
+        <item name="colorPrimaryDark">#00838f</item>
+        <item name="colorAccent">#ffff00</item>
     </style>
 
 </resources>
