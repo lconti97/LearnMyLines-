@@ -1886,7 +1886,7 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0b00fb;
+        public static final int AppBaseTheme=0x7f0b00f9;
         public static final int Base_Animation_AppCompat_DropDownUp=0x7f0b00df;
         public static final int Base_TextAppearance_AppCompat=0x7f0b00a3;
         public static final int Base_TextAppearance_AppCompat_Body1=0x7f0b00ae;
@@ -2043,8 +2043,6 @@ containing a value of this type.
     
          */
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0095;
-        public static final int HoloActionBar=0x7f0b00f9;
-        public static final int HoloTheme=0x7f0b00f8;
         public static final int Platform_AppCompat=0x7f0b00d5;
         public static final int Platform_AppCompat_Dialog=0x7f0b00d7;
         public static final int Platform_AppCompat_Light=0x7f0b00d6;
@@ -2134,7 +2132,7 @@ containing a value of this type.
         public static final int Theme_AppCompat_Light_DialogWhenLarge=0x7f0b00cb;
         public static final int Theme_AppCompat_Light_NoActionBar=0x7f0b00c9;
         public static final int Theme_AppCompat_NoActionBar=0x7f0b00c8;
-        public static final int Theme_Custom=0x7f0b00fa;
+        public static final int Theme_Orange=0x7f0b00f8;
         public static final int ThemeOverlay_AppCompat=0x7f0b00d0;
         /**  Theme overlay that replaces the normal control color, which by default is the same as the
          secondary text color, with the primary text color. 

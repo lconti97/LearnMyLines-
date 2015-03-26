@@ -1,18 +1,9 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="HoloTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/HoloActionBar</item>
-    </style>
-
-    <style name="HoloActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#ff9800</item>
-        <item name="android:backgroundStacked">#ff9800</item>
-    </style>
-
-    <style name="Theme.Custom" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#ff00bcd4</item>
-        <item name="colorPrimaryDark">#00838f</item>
-        <item name="colorAccent">#ffff00</item>
+    <style name="Theme.Orange" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#ff9800</item>
+        <item name="colorPrimaryDark">#f57c00</item>
+        <item name="colorAccent">#69f0ae</item>
     </style>
 
 </resources>

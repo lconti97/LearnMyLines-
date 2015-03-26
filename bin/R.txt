@@ -495,7 +495,7 @@ int string repeat 0x7f0a0019
 int string stop 0x7f0a0016
 int string undo 0x7f0a001b
 int style Animation_AppCompat_DropDownUp 0x7f0b00cf
-int style AppBaseTheme 0x7f0b00fb
+int style AppBaseTheme 0x7f0b00f9
 int style Base_Animation_AppCompat_DropDownUp 0x7f0b00df
 int style Base_TextAppearance_AppCompat 0x7f0b00a3
 int style Base_TextAppearance_AppCompat_Body1 0x7f0b00ae
@@ -611,8 +611,6 @@ int style Base_Widget_AppCompat_Spinner_Underlined 0x7f0b007e
 int style Base_Widget_AppCompat_TextView_SpinnerItem 0x7f0b00a1
 int style Base_Widget_AppCompat_Toolbar 0x7f0b0094
 int style Base_Widget_AppCompat_Toolbar_Button_Navigation 0x7f0b0095
-int style HoloActionBar 0x7f0b00f9
-int style HoloTheme 0x7f0b00f8
 int style Platform_AppCompat 0x7f0b00d5
 int style Platform_AppCompat_Dialog 0x7f0b00d7
 int style Platform_AppCompat_Light 0x7f0b00d6
@@ -684,7 +682,7 @@ int style Theme_AppCompat_Light_Dialog 0x7f0b00cd
 int style Theme_AppCompat_Light_DialogWhenLarge 0x7f0b00cb
 int style Theme_AppCompat_Light_NoActionBar 0x7f0b00c9
 int style Theme_AppCompat_NoActionBar 0x7f0b00c8
-int style Theme_Custom 0x7f0b00fa
+int style Theme_Orange 0x7f0b00f8
 int style ThemeOverlay_AppCompat 0x7f0b00d0
 int style ThemeOverlay_AppCompat_ActionBar 0x7f0b00d3
 int style ThemeOverlay_AppCompat_Dark 0x7f0b00d2
