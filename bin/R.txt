@@ -349,7 +349,7 @@ int drawable abc_textfield_default_mtrl_alpha 0x7f020033
 int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020034
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020035
 int drawable abc_textfield_search_material 0x7f020036
-int drawable button_divider_shape 0x7f020037
+int drawable ic_btn_speak_now 0x7f020037
 int drawable ic_launcher 0x7f020038
 int id action_bar 0x7f050031
 int id action_bar_activity_content 0x7f050018
@@ -364,13 +364,14 @@ int id action_menu_presenter 0x7f05001b
 int id action_mode_bar 0x7f05002e
 int id action_mode_bar_stub 0x7f05002d
 int id action_mode_close_button 0x7f050020
-int id action_settings 0x7f05004d
+int id action_settings 0x7f05004e
 int id activity_chooser_view_content 0x7f050021
 int id activity_edit_play_view_pager 0x7f05003f
 int id always 0x7f05000d
 int id beginning 0x7f050012
-int id button_center 0x7f05004a
-int id button_left 0x7f050049
+int id button_bar 0x7f050049
+int id button_center 0x7f05004c
+int id button_left 0x7f05004a
 int id button_right 0x7f05004b
 int id checkbox 0x7f050029
 int id collapseActionView 0x7f05000f
@@ -398,7 +399,7 @@ int id listItemContainer 0x7f050047
 int id listMode 0x7f050002
 int id listView1 0x7f050042
 int id list_item 0x7f050025
-int id menu_item_new_project 0x7f05004c
+int id menu_item_new_project 0x7f05004d
 int id middle 0x7f050013
 int id never 0x7f05000b
 int id none 0x7f050004

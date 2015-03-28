@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:orientation="horizontal" >
+    android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/button_left"
-        style="@style/FlatButton"/>
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
 
-    <Button
+        <Button
+            android:id="@+id/button_left"
+            style="@style/FlatButton" />
+
+        <Button
+            android:id="@+id/button_right"
+            style="@style/FlatButton" />
+    </LinearLayout>
+    
+    <ImageButton 
         android:id="@+id/button_center"
-        style="@style/FlatButton" />
+        android:background="@color/accent"
+        android:src="@drawable/ic_btn_speak_now"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_above="@id/button_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-28dp"/>
 
-    <Button
-        android:id="@+id/button_right"
-        style="@style/FlatButton" />
-
-</LinearLayout>
+</RelativeLayout>

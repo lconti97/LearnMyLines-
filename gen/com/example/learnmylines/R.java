@@ -1652,7 +1652,7 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020034;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020035;
         public static final int abc_textfield_search_material=0x7f020036;
-        public static final int button_divider_shape=0x7f020037;
+        public static final int ic_btn_speak_now=0x7f020037;
         public static final int ic_launcher=0x7f020038;
     }
     public static final class id {
@@ -1669,13 +1669,14 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f05002e;
         public static final int action_mode_bar_stub=0x7f05002d;
         public static final int action_mode_close_button=0x7f050020;
-        public static final int action_settings=0x7f05004d;
+        public static final int action_settings=0x7f05004e;
         public static final int activity_chooser_view_content=0x7f050021;
         public static final int activity_edit_play_view_pager=0x7f05003f;
         public static final int always=0x7f05000d;
         public static final int beginning=0x7f050012;
-        public static final int button_center=0x7f05004a;
-        public static final int button_left=0x7f050049;
+        public static final int button_bar=0x7f050049;
+        public static final int button_center=0x7f05004c;
+        public static final int button_left=0x7f05004a;
         public static final int button_right=0x7f05004b;
         public static final int checkbox=0x7f050029;
         public static final int collapseActionView=0x7f05000f;
@@ -1703,7 +1704,7 @@ containing a value of this type.
         public static final int listMode=0x7f050002;
         public static final int listView1=0x7f050042;
         public static final int list_item=0x7f050025;
-        public static final int menu_item_new_project=0x7f05004c;
+        public static final int menu_item_new_project=0x7f05004d;
         public static final int middle=0x7f050013;
         public static final int never=0x7f05000b;
         public static final int none=0x7f050004;

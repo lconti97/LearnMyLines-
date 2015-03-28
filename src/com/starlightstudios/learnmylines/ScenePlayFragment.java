@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.learnmylines.R;
@@ -21,7 +22,7 @@ import com.starlightstudios.learnmylines.Scene.OnDataChangedListener;
 public class ScenePlayFragment extends Fragment {
 	private static final String TAG = "ScenePlayFragment";
 
-	private Button mCenterButton;
+	private ImageButton mCenterButton;
 	private Button mLeftButton;
 	private Button mRightButton;
 	private SceneAudioPlayer mPlayer;
@@ -49,13 +50,13 @@ public class ScenePlayFragment extends Fragment {
 			if(!mPlaying)
 			{
 				playScene();
-				mCenterButton.setText(R.string.pause);
+//				mCenterButton.setText(R.string.pause);
 				mPlaying = true;
 			}
 			else
 			{
 				mPlayer.pause();
-				mCenterButton.setText(R.string.play);
+//				mCenterButton.setText(R.string.play);
 				mPlaying = false;
 			}
 		}
@@ -94,7 +95,7 @@ public class ScenePlayFragment extends Fragment {
 
 		mLeftButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_left);
-		mCenterButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+		mCenterButton = (ImageButton)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_center);
 		mRightButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_right);
@@ -163,7 +164,7 @@ public class ScenePlayFragment extends Fragment {
 	private void switchButtons() {
 		if(isMyLine()) {
 			mLeftButton.setText(R.string.repeat);
-			mCenterButton.setText(R.string.next);
+//			mCenterButton.setText(R.string.next);
 			mRightButton.setText(R.string.check_line);
 
 			mLeftButton.setOnClickListener(mRepeatListener);
@@ -172,10 +173,10 @@ public class ScenePlayFragment extends Fragment {
 		}
 		else {
 			mLeftButton.setText(R.string.repeat);
-			if(!mPlaying)
-				mCenterButton.setText(R.string.play);
-			else
-				mCenterButton.setText(R.string.pause);
+			if(!mPlaying) {}
+//				mCenterButton.setText(R.string.play);
+			else {}
+//				mCenterButton.setText(R.string.pause);
 			mRightButton.setText(R.string.next);
 
 			mLeftButton.setOnClickListener(mRepeatListener);
@@ -227,7 +228,7 @@ public class ScenePlayFragment extends Fragment {
 
 	private void onPlayComplete()
 	{
-		mCenterButton.setText(R.string.play);
+//		mCenterButton.setText(R.string.play);
 		mPlaying = false;
 	}
 

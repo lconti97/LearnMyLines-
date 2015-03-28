@@ -1,6 +1,5 @@
 package com.starlightstudios.learnmylines;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.learnmylines.R;
@@ -22,7 +22,7 @@ import com.example.learnmylines.R;
 public class SceneEditFragment extends Fragment{
 	private static final String TAG = "SceneEditFragment";
 
-	private Button mRecordButton;
+	private ImageButton mRecordButton;
 	private Button mCharMeButton;
 	private Button mCharNotMeButton;
 	private SceneAudioRecorder mRecorder;
@@ -62,7 +62,7 @@ public class SceneEditFragment extends Fragment{
 		
 		mSpeaker = c.getString(R.string.me);
 
-		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mRecordButton = (ImageButton)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_center);
 		mCharMeButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_left);
@@ -99,11 +99,11 @@ public class SceneEditFragment extends Fragment{
 		//if mRecording, the fragment has been rotated
 		if(!mRecording)
 		{
-			mRecordButton.setText(R.string.record);
+//			mRecordButton.setText(R.string.record);
 		}
 		else
 		{
-			mRecordButton.setText(R.string.stop);
+//			mRecordButton.setText(R.string.stop);
 		}
 		mRecordButton.setOnClickListener(new OnClickListener() {
 
@@ -114,7 +114,7 @@ public class SceneEditFragment extends Fragment{
 					mRecording = mRecorder.start(mScene, mSpeaker);
 					if(mRecording)
 					{
-						mRecordButton.setText(R.string.stop);
+//						mRecordButton.setText(R.string.stop);
 					}
 					else
 					{
@@ -169,7 +169,7 @@ public class SceneEditFragment extends Fragment{
 		if(mRecorder!=null && mRecording) {
 			mRecorder.stop();
 			mRecorder.reset();
-			mRecordButton.setText(R.string.record);
+//			mRecordButton.setText(R.string.record);
 			mRecording = false;
 			mLineListAdapter.notifyDataSetChanged();
 		}
