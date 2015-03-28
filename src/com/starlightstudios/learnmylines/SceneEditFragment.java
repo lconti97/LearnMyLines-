@@ -23,8 +23,6 @@ public class SceneEditFragment extends Fragment{
 	private static final String TAG = "SceneEditFragment";
 
 	private Button mRecordButton;
-	private Button mUndoButton;
-	private Button mDoneButton;
 	private Button mCharMeButton;
 	private Button mCharNotMeButton;
 	private SceneAudioRecorder mRecorder;
@@ -36,7 +34,6 @@ public class SceneEditFragment extends Fragment{
 	private EditPlayPagerActivity mActivity;
 
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,
 			Bundle savedInstanceState)
@@ -67,35 +64,13 @@ public class SceneEditFragment extends Fragment{
 
 		mRecordButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_center);
-		mUndoButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mCharMeButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_left);
-		mDoneButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mCharNotMeButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_right);
-		mCharMeButton = (Button)v.findViewById(
-				R.id.fragment_scene_edit_characterButtonMe);
-		mCharNotMeButton = (Button)v.findViewById(
-				R.id.fragment_scene_edit_characterButtonNotMe);
-
-		mUndoButton.setText(R.string.undo);
-		mDoneButton.setText(R.string.done);
-
-		mUndoButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO currently does nothing
-
-			}
-		});
-
-		mDoneButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				stopRecording();
-				mActivity.getViewPager().setCurrentItem(1, true);
-			}
-		});
+		
+		mCharMeButton.setText(R.string.me);
+		mCharNotMeButton.setText(R.string.not_me);
 		
 		mCharMeButton.setOnClickListener(new OnClickListener() {
 			

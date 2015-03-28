@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter;
 
 import com.example.learnmylines.R;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class EditPlayPagerActivity extends ActionBarActivity {
 	private static final String TAG = "EditPlayPagerActivity";
 

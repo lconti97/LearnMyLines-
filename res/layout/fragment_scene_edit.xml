@@ -11,35 +11,11 @@
         android:layout_alignParentBottom="true"
         layout="@layout/three_button_bar" />
 
-    <LinearLayout
-        android:id="@+id/fragment_scene_edit_characterButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/fragment_scene_edit_buttonBar"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/fragment_scene_edit_characterButtonMe"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/me" 
-            android:padding="16dp"/>
-
-        <Button
-            android:id="@+id/fragment_scene_edit_characterButtonNotMe"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/not_me" 
-            android:padding="16dp"/>
-    </LinearLayout>
-
     <ListView
         android:id="@+id/fragment_scene_edit_lineList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/fragment_scene_edit_characterButtons" >
+        android:layout_above="@id/fragment_scene_edit_buttonBar" >
     </ListView>
 
 </RelativeLayout>
