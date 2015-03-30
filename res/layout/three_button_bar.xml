@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -10,23 +11,30 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal" >
 
-        <Button
+        <com.gc.materialdesign.views.ButtonRectangle
             android:id="@+id/button_left"
+            android:text="@string/dummy"
+            android:layout_marginLeft="-8dp"
+            android:layout_marginRight="-10dp"
             style="@style/FlatButton" />
 
-        <Button
+        <com.gc.materialdesign.views.ButtonRectangle
             android:id="@+id/button_right"
+            android:text="@string/dummy"
+            android:layout_marginLeft="-4dp"
+            android:layout_marginRight="-8dp"
             style="@style/FlatButton" />
     </LinearLayout>
     
-    <ImageButton 
+    <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/button_center"
         android:background="@color/accent"
-        android:src="@drawable/ic_btn_speak_now"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@id/button_bar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-28dp"/>
+        android:layout_marginBottom="-56dp"
+        materialdesign:iconDrawable="@drawable/ic_mic_black_24dp"
+        materialdesign:animate="true"/>
 
 </RelativeLayout>

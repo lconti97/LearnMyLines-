@@ -1,6 +1,7 @@
 package com.starlightstudios.learnmylines;
 
 import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,18 +14,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.learnmylines.R;
+import com.gc.materialdesign.views.ButtonFloat;
+import com.gc.materialdesign.views.ButtonRectangle;
 
 public class SceneEditFragment extends Fragment{
 	private static final String TAG = "SceneEditFragment";
 
-	private ImageButton mRecordButton;
-	private Button mCharMeButton;
-	private Button mCharNotMeButton;
+	private ButtonFloat mRecordButton;
+	private ButtonRectangle mCharMeButton;
+	private ButtonRectangle mCharNotMeButton;
 	private SceneAudioRecorder mRecorder;
 	private boolean mRecording = false;
 	private String mSpeaker;
@@ -62,15 +63,20 @@ public class SceneEditFragment extends Fragment{
 		
 		mSpeaker = c.getString(R.string.me);
 
-		mRecordButton = (ImageButton)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mRecordButton = (ButtonFloat)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_center);
-		mCharMeButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mCharMeButton = (ButtonRectangle)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_left);
-		mCharNotMeButton = (Button)v.findViewById(R.id.fragment_scene_edit_buttonBar)
+		mCharNotMeButton = (ButtonRectangle)v.findViewById(R.id.fragment_scene_edit_buttonBar)
 				.findViewById(R.id.button_right);
 		
-		mCharMeButton.setText(R.string.me);
-		mCharNotMeButton.setText(R.string.not_me);
+		mCharMeButton.setText(getString(R.string.me));
+		mCharNotMeButton.setText(getString(R.string.not_me));
+		
+		mCharMeButton.setBackgroundColor(getResources().getColor(R.color.primary));
+		mCharNotMeButton.setBackgroundColor(getResources().getColor(R.color.primary));
+		mRecordButton.setBackgroundColor(getResources().getColor(R.color.accent));
+		
 		
 		mCharMeButton.setOnClickListener(new OnClickListener() {
 			

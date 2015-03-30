@@ -12,19 +12,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.learnmylines.R;
+import com.gc.materialdesign.views.ButtonFlat;
+import com.gc.materialdesign.views.ButtonFloat;
+import com.gc.materialdesign.views.ButtonRectangle;
 import com.starlightstudios.learnmylines.Scene.OnDataChangedListener;
 
 public class ScenePlayFragment extends Fragment {
 	private static final String TAG = "ScenePlayFragment";
 
-	private ImageButton mCenterButton;
-	private Button mLeftButton;
-	private Button mRightButton;
+	private ButtonFloat mCenterButton;
+	private ButtonRectangle mLeftButton;
+	private ButtonRectangle mRightButton;
 	private SceneAudioPlayer mPlayer;
 	private Scene mScene;
 	private boolean mPlaying = false;
@@ -93,12 +94,16 @@ public class ScenePlayFragment extends Fragment {
 		mCurrentLineIndex = 0;
 
 
-		mLeftButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+		mLeftButton = (ButtonRectangle)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_left);
-		mCenterButton = (ImageButton)v.findViewById(R.id.fragment_scene_play_buttonBar)
+		mCenterButton = (ButtonFloat)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_center);
-		mRightButton = (Button)v.findViewById(R.id.fragment_scene_play_buttonBar)
+		mRightButton = (ButtonRectangle)v.findViewById(R.id.fragment_scene_play_buttonBar)
 				.findViewById(R.id.button_right);
+		
+		mLeftButton.setBackgroundColor(getResources().getColor(R.color.primary));
+		mRightButton.setBackgroundColor(getResources().getColor(R.color.primary));
+		mCenterButton.setBackgroundColor(getResources().getColor(R.color.accent));
 
 		switchButtons();
 
@@ -163,21 +168,21 @@ public class ScenePlayFragment extends Fragment {
 
 	private void switchButtons() {
 		if(isMyLine()) {
-			mLeftButton.setText(R.string.repeat);
+			mLeftButton.setText(getString(R.string.repeat));
 //			mCenterButton.setText(R.string.next);
-			mRightButton.setText(R.string.check_line);
+			mRightButton.setText(getString(R.string.check_line));
 
 			mLeftButton.setOnClickListener(mRepeatListener);
 			mCenterButton.setOnClickListener(mNextListener);
 			mRightButton.setOnClickListener(mCheckLineListener);
 		}
 		else {
-			mLeftButton.setText(R.string.repeat);
+			mLeftButton.setText(getString(R.string.repeat));
 			if(!mPlaying) {}
 //				mCenterButton.setText(R.string.play);
 			else {}
 //				mCenterButton.setText(R.string.pause);
-			mRightButton.setText(R.string.next);
+			mRightButton.setText(getString(R.string.next));
 
 			mLeftButton.setOnClickListener(mRepeatListener);
 			mCenterButton.setOnClickListener(mPlayListener);
