@@ -1870,8 +1870,8 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f060022;
         public static final int expanded_menu=0x7f060028;
         public static final int fragmentContainer=0x7f060040;
-        public static final int fragment_scene_edit_buttonBar=0x7f06004f;
-        public static final int fragment_scene_edit_lineList=0x7f060050;
+        public static final int fragment_scene_edit_buttonBar=0x7f060050;
+        public static final int fragment_scene_edit_lineList=0x7f06004f;
         public static final int fragment_scene_play_buttonBar=0x7f060051;
         public static final int fragment_scene_play_lineList=0x7f060052;
         public static final int green=0x7f060045;
