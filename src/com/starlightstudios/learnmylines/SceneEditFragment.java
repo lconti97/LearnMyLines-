@@ -46,13 +46,8 @@ public class SceneEditFragment extends Fragment{
 			((ActionBarActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 		
-		Activity c = getActivity();
-		int[] sceneIndex = c.getIntent().
-				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
-		mScene = ProjectManager.get()
-				.getProjects().get(sceneIndex[0])
-				.getActs().get(sceneIndex[1])
-				.getScenes().get(sceneIndex[2]);
+		EditPlayPagerActivity c = (EditPlayPagerActivity) getActivity();
+		mScene = c.getScene();
 
 		View v = inflater.inflate(R.layout.fragment_scene_edit, parent, false);
 

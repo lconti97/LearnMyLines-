@@ -77,12 +77,8 @@ public class ScenePlayFragment extends Fragment {
 	{
 		setHasOptionsMenu(true);
 
-		int[] sceneIndex = getActivity().getIntent().
-				getIntArrayExtra(ProjectListFragment.EXTRA_SCENE_INDEX);
-		mScene = ProjectManager.get()
-				.getProjects().get(sceneIndex[0])
-				.getActs().get(sceneIndex[1])
-				.getScenes().get(sceneIndex[2]);
+		EditPlayPagerActivity c = (EditPlayPagerActivity) getActivity();
+		mScene = c.getScene();
 
 		View v = inflater.inflate(R.layout.fragment_scene_play, parent, false);
 

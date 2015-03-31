@@ -33,16 +33,7 @@ public class EditPlayPagerActivity extends ActionBarActivity {
 	{
 		super.onCreate(savedInstanceState);
 		
-		String s = "";
-		int[] sceneIndex = getIntent().getExtras().
-				getIntArray(ProjectListFragment.EXTRA_SCENE_INDEX);
-		for(int i = 0; i < sceneIndex.length; i++)
-			s += sceneIndex[i] + " ";
-		Log.i(TAG, "Scene index: " + s);
-		mScene = ProjectManager.get()
-				.getProjects().get(sceneIndex[0])
-				.getActs().get(sceneIndex[1])
-				.getScenes().get(sceneIndex[2]);
+		mScene = new Scene("Sample");
 		
 		mLineListAdapter = new ArrayAdapter<Line>(
 				this, 
@@ -127,5 +118,8 @@ public class EditPlayPagerActivity extends ActionBarActivity {
 		return mViewPager;
 	}
 	
+	public Scene getScene() {
+		return mScene;
+	}
 
 }
